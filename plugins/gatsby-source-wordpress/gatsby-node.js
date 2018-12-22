@@ -7,7 +7,7 @@ exports.sourceNodes = async (
 	{ actions: { createNode }, createNodeId },
 	{ plugins, ...options }
 ) => {
-	const nofaceInsightsURL = `http://local-noface.co.uk/wp-json/insights/v2/all`;
+	const nofaceInsightsURL = `https://noface.co.uk/wp-json/insights/v2/all`;
 	const nofaceInsightsResponse = await fetch(nofaceInsightsURL);
 	const nofaceInsightsData = await nofaceInsightsResponse.json();
 
@@ -28,7 +28,7 @@ exports.sourceNodes = async (
 		});
 	});
 
-	const nofaceCasesURL = `http://local-noface.co.uk/wp-json/cases/v2/all`;
+	const nofaceCasesURL = `https://noface.co.uk/wp-json/cases/v2/all`;
 	const nofaceCasesResponse = await fetch(nofaceCasesURL);
 	const nofaceCasesData = await nofaceCasesResponse.json();
 
