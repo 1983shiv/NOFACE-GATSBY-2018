@@ -4,19 +4,12 @@ import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
 import Layout from "../layout";
-import config from "../../data/SiteConfig";
 
 import CaseCollection from "../components/organisms/collection/cases";
-import Footer from "../components/organisms/footer";
-import Header from "../components/organisms/header";
 import Hero from "../components/organisms/hero";
-import SEO from "../components/SEO/SEO";
 
 export default ({ data }) => (
 	<Layout>
-		<Helmet title={config.siteTitle} />
-		<SEO />
-		<Header />
 		<Hero darkOverlay="true" />
 		<CaseCollection />
 		<section className="section section--description">
@@ -43,6 +36,5 @@ export default ({ data }) => (
 				</p>
 			</div>
 		</section>
-		<Footer />
 	</Layout>
 );

@@ -18,7 +18,7 @@ const HeaderComponent = styled.header`
 	font-weight: 700;
 
 	a {
-		color: $color-white;
+		color: ${props => props.colour || "white"};
 	}
 
 	h5 {

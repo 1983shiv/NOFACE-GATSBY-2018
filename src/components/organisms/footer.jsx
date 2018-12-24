@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
+import { Container, Row, Col } from "react-grid-system";
+
 export default class footer extends Component {
 	render() {
 		return (
 			<footer className="footer" role="contentinfo">
-				<div className="container">
-					<div className="row">
-						<div className="col-12">
+				<Container>
+					<Row>
+						<Col>
 							<div className="flex flex--wrap flex--justify-between">
 								<div className="logo">
 									<a href="http://local-noface.co.uk">
@@ -33,8 +35,8 @@ export default class footer extends Component {
 								<h3>Providing your business with a unique identity.</h3>
 							</div>
 							<hr className="hr hr--white" />
-							<div className="row">
-								<div className="col-12 col-md-6 col-lg-3">
+							<Row>
+								<Col md={6} lg={3}>
 									<h4>Contact us</h4>
 									<nav className="nav" role="navigation">
 										<ul>
@@ -53,8 +55,8 @@ export default class footer extends Component {
 											</li>
 										</ul>
 									</nav>
-								</div>
-								<div className="col-12 col-md-6 col-lg-3">
+								</Col>
+								<Col md={6} lg={3}>
 									<h4>Pages</h4>
 									<nav className="nav" role="navigation">
 										<ul>
@@ -75,10 +77,10 @@ export default class footer extends Component {
 											<li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-27">
 												<a href="http://local-noface.co.uk/contact/">Contact</a>
 											</li>
-										</ul>{" "}
+										</ul>
 									</nav>
-								</div>
-								<div className="col-12 col-md-6 col-lg-3">
+								</Col>
+								<Col md={6} lg={3}>
 									<h4>Case Studies</h4>
 									<nav className="nav" role="navigation">
 										<ul>
@@ -109,8 +111,8 @@ export default class footer extends Component {
 											</li>
 										</ul>
 									</nav>
-								</div>
-								<div className="col-12 col-md-6 col-lg-3">
+								</Col>
+								<Col md={6} lg={3}>
 									<h4>Connect with us</h4>
 									<nav className="nav" role="navigation">
 										<ul>
@@ -148,11 +150,11 @@ export default class footer extends Component {
 											</li>
 										</ul>
 									</nav>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+								</Col>
+							</Row>
+						</Col>
+					</Row>
+				</Container>
 			</footer>
 		);
 	}
