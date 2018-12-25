@@ -22,28 +22,26 @@ export default class PostTemplate extends React.Component {
 		pageHTML = autoParagraph(pageHTML);
 		pageHTML = removeDimensions(pageHTML);
 
-		console.log({ pageHTML });
-
-		// const parser = new htmlparser.Parser(
-		// 	{
-		// 		onopentag: function(name, attribs) {
-		// 			if (name === "script" && attribs.type === "text/javascript") {
-		// 				console.log("JS! Hooray!");
-		// 			}
-		// 		},
-		// 		ontext: function(text) {
-		// 			console.log("-->", text);
-		// 		},
-		// 		onclosetag: function(tagname) {
-		// 			if (tagname === "p") {
-		// 				console.log("Yo WTF That's a fucking paragraph tag");
-		// 			}
-		// 		}
-		// 	},
-		// 	{ decodeEntities: true }
-		// );
-		// parser.write(pageHTML);
-		// parser.end();
+		const parser = new htmlparser.Parser(
+			{
+				onopentag: function(name, attribs) {
+					if (name === "script" && attribs.type === "text/javascript") {
+						console.log("JS! Hooray!");
+					}
+				},
+				ontext: function(text) {
+					console.log("-->", text);
+				},
+				onclosetag: function(tagname) {
+					if (tagname === "p") {
+						console.log("Yo WTF That's a fucking paragraph tag");
+					}
+				}
+			},
+			{ decodeEntities: true }
+		);
+		parser.write(pageHTML);
+		parser.end();
 
 		return { __html: pageHTML };
 	}
@@ -55,16 +53,7 @@ export default class PostTemplate extends React.Component {
 					<Helmet>
 						<title>{`${decodeHTML(this.props.pageContext.title)}`}</title>
 					</Helmet>
-					<main role="main">
-						<h1>{decodeHTML(this.props.pageContext.title)}</h1>
-						<section>
-							<article
-								id=""
-								className="article"
-								dangerouslySetInnerHTML={this.createMarkup()}
-							/>
-						</section>
-					</main>
+					<main dangerouslySetInnerHTML={this.createMarkup()} />
 				</React.Fragment>
 			</Layout>
 		);

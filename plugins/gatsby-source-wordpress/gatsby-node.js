@@ -42,14 +42,19 @@ exports.createPages = ({ graphql, actions }) => {
 							content
 							excerpt
 							id
+							template
 						}
 					}
 				}
 			}
 		`).then(result => {
 			result.data.allNoFacePage.edges.forEach(({ node }) => {
+				let slug = node.slug;
+				if (slug === "homepage" || slug === "home") {
+					slug = "/";
+				}
 				createPage({
-					path: node.slug,
+					path: slug,
 					component: path.resolve(`./src/templates/page.jsx`),
 					context: {
 						slug: node.slug,

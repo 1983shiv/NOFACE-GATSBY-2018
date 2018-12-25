@@ -9,15 +9,21 @@ export default class PostTemplate extends React.Component {
 	render() {
 		return (
 			<Layout>
-				<div>
+				<React.Fragment>
 					<Helmet>
-						<title>{`${post.title} | ${config.siteTitle}`}</title>
+						<title>{`${decodeHTML(this.props.pageContext.title)}`}</title>
 					</Helmet>
-					<SEO postPath={slug} postNode={postNode} postSEO />
-					<div>
-						<h1>{post.title}</h1>
-					</div>
-				</div>
+					<main role="main">
+						<h1>{decodeHTML(this.props.pageContext.title)}</h1>
+						<section>
+							<article
+								id=""
+								className="article"
+								dangerouslySetInnerHTML={this.createMarkup()}
+							/>
+						</section>
+					</main>
+				</React.Fragment>
 			</Layout>
 		);
 	}
