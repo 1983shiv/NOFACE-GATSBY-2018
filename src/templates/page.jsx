@@ -30,7 +30,16 @@ export default class PostTemplate extends React.Component {
 		}
 
 		const pageComponents = componentsArray.map(component => (
-			<Hero key={component.id} title={component.data.title} />
+			<Hero
+				key={component.id}
+				alignment={component.data.alignment}
+				backgroundColour={component.data.background_colour}
+				backgroundImage={component.data.background_image}
+				content={component.data.content}
+				excerpt={component.data.excerpt}
+				title={component.data.title}
+				use_title={component.data.use_title}
+			/>
 		));
 
 		return pageComponents;
