@@ -7,7 +7,7 @@ exports.sourceNodes = async (
 	{ actions: { createNode }, createNodeId },
 	{ plugins, ...options }
 ) => {
-	const nofacePagesURL = `https://noface.co.uk/wp-json/pages/v2/all`;
+	const nofacePagesURL = `https://wp.noface.app/wp-json/pages/v2/all`;
 	const nofacePagesResponse = await fetch(nofacePagesURL);
 	const nofacePagesData = await nofacePagesResponse.json();
 
@@ -39,10 +39,21 @@ exports.createPages = ({ graphql, actions }) => {
 						node {
 							slug
 							title
-							content
+							content {
+								id
+								name
+								data {
+									use_title
+									excerpt
+									alignment
+									background_colour
+									background_image
+									title
+									content
+								}
+							}
 							excerpt
 							id
-							template
 						}
 					}
 				}
@@ -57,10 +68,10 @@ exports.createPages = ({ graphql, actions }) => {
 					path: slug,
 					component: path.resolve(`./src/templates/page.jsx`),
 					context: {
-						slug: node.slug,
-						title: node.title,
 						content: node.content,
-						excerpt: node.excerpt
+						excerpt: node.excerpt,
+						title: node.title,
+						slug: node.slug
 					}
 				});
 			});

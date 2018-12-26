@@ -87,10 +87,10 @@ export default class header extends Component {
 		return (
 			<HeaderComponent>
 				<div className="logo">
-					<a href="https://noface.co.uk">
+					<Link to="/">
 						<Logo />
 						<h5 className="hide">NoFace Designs</h5>
-					</a>
+					</Link>
 				</div>
 
 				<nav>
@@ -99,10 +99,10 @@ export default class header extends Component {
 							<Link to="/">Home</Link>
 						</li>
 						<li>
-							<Link to="/">About</Link>
+							<Link to="/about">About</Link>
 						</li>
 						<li>
-							<Link to="/">Work</Link>
+							<Link to="/work">Work</Link>
 						</li>
 						<li>
 							<Link to="/">Insights</Link>

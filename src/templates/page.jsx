@@ -15,35 +15,25 @@ import {
 	slugTitle
 } from "../components/helpers";
 
+import Hero from "../components/molecules/hero";
+
 export default class PostTemplate extends React.Component {
 	createMarkup() {
 		let pageHTML = this.props.pageContext.content;
-		pageHTML = httpTohttps(pageHTML);
-		pageHTML = autoParagraph(pageHTML);
-		pageHTML = removeDimensions(pageHTML);
 
-		const parser = new htmlparser.Parser(
-			{
-				onopentag: function(name, attribs) {
-					if (name === "script" && attribs.type === "text/javascript") {
-						console.log("JS! Hooray!");
-					}
-				},
-				ontext: function(text) {
-					console.log("-->", text);
-				},
-				onclosetag: function(tagname) {
-					if (tagname === "p") {
-						console.log("Yo WTF That's a fucking paragraph tag");
-					}
-				}
-			},
-			{ decodeEntities: true }
-		);
-		parser.write(pageHTML);
-		parser.end();
+		let componentsArray = [];
+		let newArrayDataOfOjbect = Object.values(pageHTML);
 
-		return { __html: pageHTML };
+		for (var key in newArrayDataOfOjbect) {
+			if (newArrayDataOfOjbect.hasOwnProperty(key))
+				componentsArray.push(newArrayDataOfOjbect[key]);
+		}
+
+		const pageComponents = componentsArray.map(component => (
+			<Hero key={component.id} title={component.data.title} />
+		));
+
+		return pageComponents;
 	}
 
 	render() {
@@ -53,7 +43,7 @@ export default class PostTemplate extends React.Component {
 					<Helmet>
 						<title>{`${decodeHTML(this.props.pageContext.title)}`}</title>
 					</Helmet>
-					<main dangerouslySetInnerHTML={this.createMarkup()} />
+					<main>{this.createMarkup()}</main>
 				</React.Fragment>
 			</Layout>
 		);
