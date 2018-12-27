@@ -39,7 +39,7 @@ const HeroElement = styled.section`
 export default class hero extends Component {
 	render() {
 		return (
-			<HeroElement className="hero">
+			<HeroElement className="hero" data-name={this.props.name}>
 				<h2>{this.props.title}</h2>
 				<div dangerouslySetInnerHTML={{ __html: this.props.content }} />
 				<img

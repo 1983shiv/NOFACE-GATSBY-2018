@@ -29,18 +29,24 @@ export default class PostTemplate extends React.Component {
 				componentsArray.push(newArrayDataOfOjbect[key]);
 		}
 
-		const pageComponents = componentsArray.map(component => (
-			<Hero
-				key={component.id}
-				alignment={component.data.alignment}
-				backgroundColour={component.data.background_colour}
-				backgroundImage={component.data.background_image}
-				content={component.data.content}
-				excerpt={component.data.excerpt}
-				title={component.data.title}
-				use_title={component.data.use_title}
-			/>
-		));
+		const pageComponents = componentsArray.map(component => {
+			if (component.name == "acf/hero") {
+				return (
+					<Hero
+						key={component.id}
+						alignment={component.data.alignment}
+						backgroundColour={component.data.background_colour}
+						backgroundImage={component.data.background_image}
+						content={component.data.content}
+						excerpt={component.data.excerpt}
+						name={component.name}
+						title={component.data.title}
+						use_title={component.data.use_title}
+					/>
+				);
+			}
+			return;
+		});
 
 		return pageComponents;
 	}
