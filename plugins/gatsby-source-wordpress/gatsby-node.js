@@ -83,9 +83,35 @@ exports.createPages = ({ graphql, actions }) => {
 						}
 					}
 				}
+				allNoFaceCase {
+					edges {
+						node {
+							slug
+							title
+							excerpt
+							id
+						}
+					}
+				}
 			}
 		`).then(result => {
 			result.data.allNoFacePage.edges.forEach(({ node }) => {
+				let slug = node.slug;
+				if (slug === "homepage" || slug === "home") {
+					slug = "/";
+				}
+				createPage({
+					path: slug,
+					component: path.resolve(`./src/templates/page.jsx`),
+					context: {
+						content: node.content,
+						excerpt: node.excerpt,
+						title: node.title,
+						slug: node.slug
+					}
+				});
+			});
+			result.data.allNoFaceCase.edges.forEach(({ node }) => {
 				let slug = node.slug;
 				if (slug === "homepage" || slug === "home") {
 					slug = "/";

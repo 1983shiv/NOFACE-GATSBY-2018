@@ -5,43 +5,52 @@ import styled from "styled-components";
 
 import Tease from "../molecules/tease";
 
-// TODO: use this.props.count in query
+const ArchiveElement = styled.section`
+	margin-top: 32px;
+`;
 
-export default () => (
-	<StaticQuery
-		query={graphql`
-			query {
+export default class archive extends Component {
+	render() {
+		const queryCount = this.props.count;
+		const TeaseQuery = graphql`
+			query TeaseQuery {
 				allNoFaceCase(limit: 200) {
 					edges {
 						node {
 							id
 							excerpt
-							image
+							slug
+							thumbnailDefault
 							title
 						}
 					}
 				}
 			}
-		`}
-		render={data => (
-			<React.Fragment>
-				<Container>
-					<Row>
-						{data.allNoFaceCase.edges.map(({ node }) => (
-							<Col sm={12} md={6} lg={4}>
-								<Tease
-									excerpt={node.excerpt}
-									image={node.image}
-									key={node.id}
-									slug={node.slug}
-									title={node.title}
-									type="case"
-								/>
-							</Col>
-						))}
-					</Row>
-				</Container>
-			</React.Fragment>
-		)}
-	/>
-);
+		`;
+		return (
+			<StaticQuery
+				query={TeaseQuery}
+				render={data => (
+					<ArchiveElement className="ignore">
+						<Container>
+							<Row>
+								{data.allNoFaceCase.edges.map(({ node }) => (
+									<Col sm={12} md={6} lg={4}>
+										<Tease
+											excerpt={node.excerpt}
+											image={node.thumbnailDefault}
+											key={node.id}
+											slug={node.slug}
+											title={node.title}
+											type="case"
+										/>
+									</Col>
+								))}
+							</Row>
+						</Container>
+					</ArchiveElement>
+				)}
+			/>
+		);
+	}
+}
