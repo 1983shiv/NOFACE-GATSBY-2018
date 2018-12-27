@@ -1,6 +1,15 @@
 import React, { Component } from "react";
-import { Link } from "gatsby";
+import { graphql, Link, StaticQuery } from "gatsby";
 import styled from "styled-components";
+
+import {
+	autoParagraph,
+	decodeHTML,
+	httpTohttps,
+	removeDimensions,
+	removeOrphans,
+	slugTitle
+} from "../helpers";
 
 import Logo from "../atoms/logo";
 
@@ -85,34 +94,41 @@ const HeaderComponent = styled.header`
 export default class header extends Component {
 	render() {
 		return (
-			<HeaderComponent>
-				<div className="logo">
-					<Link to="/">
-						<Logo />
-						<h5 className="hide">NoFace Designs</h5>
-					</Link>
-				</div>
+			<StaticQuery
+				query={graphql`
+					query GetHeaderContent {
+						allNoFacePage {
+							edges {
+								node {
+									id
+									slug
+									title
+								}
+							}
+						}
+					}
+				`}
+				render={data => (
+					<HeaderComponent>
+						<div className="logo">
+							<Link to="/">
+								<Logo />
+								<h5 className="hide">NoFace Designs</h5>
+							</Link>
+						</div>
 
-				<nav>
-					<ul>
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-						<li>
-							<Link to="/about">About</Link>
-						</li>
-						<li>
-							<Link to="/work">Work</Link>
-						</li>
-						<li>
-							<Link to="/">Insights</Link>
-						</li>
-						<li>
-							<Link to="/">Contact</Link>
-						</li>
-					</ul>
-				</nav>
-			</HeaderComponent>
+						<nav>
+							<ul>
+								{data.allNoFacePage.edges.map(({ node }) => (
+									<li key={node.id}>
+										<Link to={node.slug}>{decodeHTML(node.title)}</Link>
+									</li>
+								))}
+							</ul>
+						</nav>
+					</HeaderComponent>
+				)}
+			/>
 		);
 	}
 }

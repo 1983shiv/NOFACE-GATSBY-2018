@@ -73,6 +73,7 @@ exports.createPages = ({ graphql, actions }) => {
 									excerpt
 									level
 									semantic_level
+									size
 									text
 									title
 									use_title

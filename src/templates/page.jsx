@@ -78,8 +78,9 @@ export default class PostTemplate extends React.Component {
 							key={component.id}
 							alignment={component.data.alignment}
 							backgroundColour={component.data.background_colour}
-							backgroundImage={component.data.background_image}
+							// backgroundImage={component.data.background_image}
 							content={component.data.content}
+							elementSize={component.data.size}
 							excerpt={component.data.excerpt}
 							name={component.name}
 							title={component.data.title}
