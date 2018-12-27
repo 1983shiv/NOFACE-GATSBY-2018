@@ -37,7 +37,12 @@ export default class PostTemplate extends React.Component {
 	createMarkup() {
 		let pageHTML = this.props.pageContext.content;
 
-		if (pageHTML && pageHTML[0].data !== null) {
+		if (
+			pageHTML &&
+			pageHTML[0] &&
+			pageHTML[0].hasOwnProperty("data") &&
+			pageHTML[0].data !== null
+		) {
 			console.log({ pageHTML });
 			let componentsArray = [];
 			let newArrayDataOfOjbect = Object.values(pageHTML);

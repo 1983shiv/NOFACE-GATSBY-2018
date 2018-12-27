@@ -35,11 +35,10 @@ export default class archive extends Component {
 						<Container>
 							<Row>
 								{data.allNoFaceCase.edges.map(({ node }) => (
-									<Col sm={12} md={6} lg={4}>
+									<Col sm={12} md={6} lg={4} key={node.id}>
 										<Tease
 											excerpt={node.excerpt}
 											image={node.thumbnailDefault}
-											key={node.id}
 											slug={node.slug}
 											title={node.title}
 											type="case"

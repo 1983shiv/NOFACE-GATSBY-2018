@@ -47,10 +47,10 @@ export default class footer extends Component {
 								<Col sm={12}>
 									<div className="flex flex--wrap flex--justify-between">
 										<div className="logo">
-											<a href="">
+											<Link to="/">
 												<Logo />
 												<h5 className="hide">NoFace Designs Ltd</h5>
-											</a>
+											</Link>
 										</div>
 										<h3>Providing your business with a unique identity.</h3>
 									</div>
@@ -108,17 +108,26 @@ export default class footer extends Component {
 									<nav role="navigation">
 										<ul>
 											<li>
-												<a href="https://www.behance.net/nofacedesigns">
+												<a
+													href="https://www.behance.net/nofacedesigns"
+													target="_blank"
+												>
 													Behance Portfolio
 												</a>
 											</li>
 											<li>
-												<a href="https://twitter.com/NoFaceDesigns">
+												<a
+													href="https://twitter.com/NoFaceDesigns"
+													target="_blank"
+												>
 													Twitter Profile
 												</a>
 											</li>
 											<li>
-												<a href="https://www.facebook.com/nofacedesigns/">
+												<a
+													href="https://www.facebook.com/nofacedesigns/"
+													target="_blank"
+												>
 													Facebook Page
 												</a>
 											</li>
