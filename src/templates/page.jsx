@@ -15,6 +15,7 @@ import {
 	slugTitle
 } from "../components/helpers";
 
+import Heading from "../components/atoms/heading";
 import Paragraph from "../components/atoms/paragraph";
 
 import Hero from "../components/molecules/hero";
@@ -32,6 +33,15 @@ export default class PostTemplate extends React.Component {
 		}
 
 		const pageComponents = componentsArray.map(component => {
+			if (component.name == "acf/heading") {
+				return (
+					<Heading
+						key={component.id}
+						name={component.name}
+						text={component.data.text}
+					/>
+				);
+			}
 			if (component.name == "acf/hero") {
 				return (
 					<Hero

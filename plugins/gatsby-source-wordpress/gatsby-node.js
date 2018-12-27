@@ -48,6 +48,8 @@ exports.createPages = ({ graphql, actions }) => {
 									background_image
 									content
 									excerpt
+									level
+									semantic_level
 									text
 									title
 									use_title

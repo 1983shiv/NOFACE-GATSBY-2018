@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "gatsby";
+import { Container, Row, Col } from "react-grid-system";
 import styled from "styled-components";
 
 const HeroElement = styled.section`
@@ -40,8 +41,14 @@ export default class hero extends Component {
 	render() {
 		return (
 			<HeroElement className="hero" data-name={this.props.name}>
-				<h2>{this.props.title}</h2>
-				<div dangerouslySetInnerHTML={{ __html: this.props.content }} />
+				<Container>
+					<Row>
+						<Col sm={12}>
+							<h2>{this.props.title}</h2>
+							<div dangerouslySetInnerHTML={{ __html: this.props.content }} />
+						</Col>
+					</Row>
+				</Container>
 				<img
 					className="hero__image"
 					src="https://dummyimage.com/1920x1080.png"
