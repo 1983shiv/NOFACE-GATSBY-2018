@@ -43,13 +43,14 @@ exports.createPages = ({ graphql, actions }) => {
 								id
 								name
 								data {
-									use_title
-									excerpt
 									alignment
 									background_colour
 									background_image
-									title
 									content
+									excerpt
+									text
+									title
+									use_title
 								}
 							}
 							excerpt

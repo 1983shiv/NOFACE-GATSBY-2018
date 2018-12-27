@@ -15,6 +15,8 @@ import {
 	slugTitle
 } from "../components/helpers";
 
+import Paragraph from "../components/atoms/paragraph";
+
 import Hero from "../components/molecules/hero";
 
 export default class PostTemplate extends React.Component {
@@ -45,6 +47,16 @@ export default class PostTemplate extends React.Component {
 					/>
 				);
 			}
+			if (component.name == "acf/paragraph") {
+				return (
+					<Paragraph
+						key={component.id}
+						name={component.name}
+						text={component.data.text}
+					/>
+				);
+			}
+
 			return;
 		});
 
