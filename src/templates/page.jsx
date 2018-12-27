@@ -20,6 +20,8 @@ import Paragraph from "../components/atoms/paragraph";
 
 import Hero from "../components/molecules/hero";
 
+import Archive from "../components/organisms/archive";
+
 export default class PostTemplate extends React.Component {
 	createMarkup() {
 		let pageHTML = this.props.pageContext.content;
@@ -33,6 +35,16 @@ export default class PostTemplate extends React.Component {
 		}
 
 		const pageComponents = componentsArray.map(component => {
+			if (component.name == "acf/archive") {
+				return (
+					<Archive
+						key={component.id}
+						name={component.name}
+						count={component.data.count}
+						type={component.data.content_type}
+					/>
+				);
+			}
 			if (component.name == "acf/heading") {
 				return (
 					<Heading

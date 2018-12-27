@@ -27,6 +27,27 @@ exports.sourceNodes = async (
 			}
 		});
 	});
+
+	const nofaceCasesURL = `https://wp.noface.app/wp-json/cases/v2/all`;
+	const nofaceCasesResponse = await fetch(nofaceCasesURL);
+	const nofaceCasesData = await nofaceCasesResponse.json();
+
+	nofaceCasesData.forEach(page => {
+		createNode({
+			...page,
+			id: createNodeId(`noface-case-${page.id}`),
+			parent: null,
+			children: [],
+			internal: {
+				type: "NoFaceCase",
+				content: JSON.stringify(page),
+				contentDigest: crypto
+					.createHash("md5")
+					.update(JSON.stringify(page))
+					.digest("hex")
+			}
+		});
+	});
 };
 
 exports.createPages = ({ graphql, actions }) => {
@@ -47,6 +68,8 @@ exports.createPages = ({ graphql, actions }) => {
 									background_colour
 									background_image
 									content
+									content_type
+									count
 									excerpt
 									level
 									semantic_level
