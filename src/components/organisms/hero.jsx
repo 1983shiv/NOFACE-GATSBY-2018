@@ -20,9 +20,25 @@ export default class hero extends Component {
 		const elementSize = props.elementSize;
 		const overlay = "0." + props.overlay;
 
-		var heroAlign;
-		var TitleElement;
-		var SectionContent;
+		var heroAlign, TitleElement, SectionContent;
+
+		const photonDomain = `https://i0.wp.com/`;
+		const backgroundRAW = props.backgroundImage.replace("https://", "");
+
+		var background_01 = photonDomain + backgroundRAW + `?ssl=1&w=320`,
+			background_02 = photonDomain + backgroundRAW + `?ssl=1&w=360`,
+			background_03 = photonDomain + backgroundRAW + `?ssl=1&w=375`,
+			background_04 = photonDomain + backgroundRAW + `?ssl=1&w=414`,
+			background_05 = photonDomain + backgroundRAW + `?ssl=1&w=720`,
+			background_06 = photonDomain + backgroundRAW + `?ssl=1&w=768`,
+			background_07 = photonDomain + backgroundRAW + `?ssl=1&w=1024`,
+			background_08 = photonDomain + backgroundRAW + `?ssl=1&w=1280`,
+			background_09 = photonDomain + backgroundRAW + `?ssl=1&w=1366`,
+			background_10 = photonDomain + backgroundRAW + `?ssl=1&w=1440`,
+			background_11 = photonDomain + backgroundRAW + `?ssl=1&w=1536`,
+			background_12 = photonDomain + backgroundRAW + `?ssl=1&w=1600`,
+			background_13 = photonDomain + backgroundRAW + `?ssl=1&w=1680`,
+			background_14 = photonDomain + backgroundRAW + `?ssl=1&w=1920`;
 
 		if (this.props.index === 0) {
 			TitleElement = "h1";
@@ -77,7 +93,8 @@ export default class hero extends Component {
 				padding: 32px;
 			}
 
-			.hero__image {
+			.hero__image,
+			.hero__image > * {
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -136,19 +153,36 @@ export default class hero extends Component {
 		`;
 
 		return (
-			<HeroElement className="hero" data-name={this.props.name}>
+			<HeroElement className="hero" data-name={props.name}>
 				<div className="hero__content">
-					<TitleElement>{this.props.title}</TitleElement>
+					<TitleElement>{props.title}</TitleElement>
 					<div
 						dangerouslySetInnerHTML={{
-							__html: removeOrphans(autoParagraph(this.props.content))
+							__html: removeOrphans(autoParagraph(props.content))
 						}}
 					/>
 				</div>
-				{this.props.backgroundImage ? (
+				{props.backgroundImage ? (
 					<picture className="hero__image">
-						{/* <source media="(min-width: 800px)" srcset="elva-800w.jpg" /> */}
-						<img src={this.props.backgroundImage} alt={this.props.title} />
+						<source
+							media="(min-width: 1920px)"
+							srcSet={props.backgroundImage}
+						/>
+						<source media="(min-width: 1680px)" srcSet={background_14} />
+						<source media="(min-width: 1600px)" srcSet={background_13} />
+						<source media="(min-width: 1536px)" srcSet={background_12} />
+						<source media="(min-width: 1440px)" srcSet={background_11} />
+						<source media="(min-width: 1366px)" srcSet={background_10} />
+						<source media="(min-width: 1280px)" srcSet={background_09} />
+						<source media="(min-width: 1024px)" srcSet={background_08} />
+						<source media="(min-width: 768px)" srcSet={background_07} />
+						<source media="(min-width: 720px)" srcSet={background_06} />
+						<source media="(min-width: 414px)" srcSet={background_05} />
+						<source media="(min-width: 375px)" srcSet={background_04} />
+						<source media="(min-width: 360px)" srcSet={background_03} />
+						<source media="(min-width: 320px)" srcSet={background_02} />
+						<source media="(min-width: 300px)" srcSet={background_01} />
+						<img src={props.backgroundImage} alt={props.title} />
 					</picture>
 				) : null}
 			</HeroElement>
