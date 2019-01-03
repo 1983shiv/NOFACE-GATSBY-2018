@@ -6,6 +6,7 @@ import styled from "styled-components";
 import {
 	autoParagraph,
 	decodeHTML,
+	flattenSlug,
 	httpTohttps,
 	removeDimensions,
 	removeOrphans,
@@ -85,7 +86,9 @@ export default class footer extends Component {
 										<ul>
 											{data.allNoFacePage.edges.map(({ node }) => (
 												<li key={node.id}>
-													<Link to={node.slug}>{decodeHTML(node.title)}</Link>
+													<Link to={flattenSlug(node.slug)}>
+														{decodeHTML(node.title)}
+													</Link>
 												</li>
 											))}
 										</ul>

@@ -5,30 +5,59 @@ import styled from "styled-components";
 
 export default class hero extends Component {
 	render() {
-		const backgroundColour = this.props.backgroundColour;
-		const elementSize = this.props.elementSize;
+		const props = this.props;
+		const backgroundColour = props.backgroundColour;
+		const elementSize = props.elementSize;
+		const overlay = "0." + props.overlay;
+
+		var TitleElement;
+		var SectionContent;
+
+		if (this.props.index === 0) {
+			TitleElement = "h1";
+			SectionContent = "90ch";
+		} else {
+			TitleElement = "h2";
+			SectionContent = "70ch";
+		}
 
 		const HeroElement = styled.section`
-			min-height: ${elementSize ? elementSize + "vh" : "400px"};
-			position: relative;
+			align-items: center;
 			display: flex;
 			flex-direction: column;
-			padding: 48px;
-			align-items: center;
 			justify-content: center;
+			min-height: ${elementSize ? elementSize + "vh" : "400px"};
+			padding: 48px;
+			position: relative;
+
 			background-color: ${backgroundColour
 				? backgroundColour
 				: "var(--primary)"};
 			color: white;
 			text-align: center;
 
-			h2 {
-				margin: 0;
+			&:before {
+				content: "";
+				display: block;
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				z-index: 2;
+
+				background: rgba(20, 18, 19, ${overlay ? overlay : "0.8"});
 			}
 
 			& > * {
 				position: relative;
 				z-index: 2;
+			}
+
+			.hero__content {
+				margin: 0 auto;
+				max-width: ${SectionContent};
+				padding: 32px;
 			}
 
 			.hero__image {
@@ -41,6 +70,14 @@ export default class hero extends Component {
 
 				object-fit: cover;
 			}
+
+			& + * {
+				margin-top: 64px;
+			}
+
+			& + .hero {
+				margin-top: 0;
+			}
 		`;
 
 		return (
@@ -48,8 +85,10 @@ export default class hero extends Component {
 				<Container>
 					<Row>
 						<Col sm={12}>
-							<h2>{this.props.title}</h2>
-							<div dangerouslySetInnerHTML={{ __html: this.props.content }} />
+							<div className="hero__content">
+								<TitleElement>{this.props.title}</TitleElement>
+								<div dangerouslySetInnerHTML={{ __html: this.props.content }} />
+							</div>
 						</Col>
 					</Row>
 				</Container>

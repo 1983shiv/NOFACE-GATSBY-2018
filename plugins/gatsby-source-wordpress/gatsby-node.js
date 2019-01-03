@@ -72,11 +72,11 @@ exports.createPages = ({ graphql, actions }) => {
 									count
 									excerpt
 									level
+									overlay
 									semantic_level
 									size
 									text
 									title
-									use_title
 								}
 							}
 							excerpt

@@ -7,6 +7,10 @@ import { decodeHTML } from "../helpers";
 const TeaseElement = styled.div`
 	margin-bottom: 32px;
 
+	@media (min-width: 768px) {
+		margin-bottom: 64px;
+	}
+
 	&:active,
 	&:focus,
 	&:hover {

@@ -52,11 +52,12 @@ export default class PostTemplate extends React.Component {
 					componentsArray.push(newArrayDataOfOjbect[key]);
 			}
 
-			const pageComponents = componentsArray.map(component => {
+			const pageComponents = componentsArray.map((component, index) => {
 				if (component.name == "acf/archive") {
 					return (
 						<Archive
 							key={component.id}
+							index={index}
 							name={component.name}
 							count={component.data.count}
 							type={component.data.content_type}
@@ -67,8 +68,11 @@ export default class PostTemplate extends React.Component {
 					return (
 						<Heading
 							key={component.id}
+							index={index}
+							level={component.data.level}
 							name={component.name}
 							text={component.data.text}
+							semantic_level={component.data.semantic_level}
 						/>
 					);
 				}
@@ -76,15 +80,16 @@ export default class PostTemplate extends React.Component {
 					return (
 						<Hero
 							key={component.id}
+							index={index}
 							alignment={component.data.alignment}
 							backgroundColour={component.data.background_colour}
-							// backgroundImage={component.data.background_image}
+							backgroundImage={component.data.background_image}
 							content={component.data.content}
 							elementSize={component.data.size}
 							excerpt={component.data.excerpt}
+							overlay={component.data.overlay}
 							name={component.name}
 							title={component.data.title}
-							use_title={component.data.use_title}
 						/>
 					);
 				}
@@ -92,6 +97,7 @@ export default class PostTemplate extends React.Component {
 					return (
 						<Paragraph
 							key={component.id}
+							index={index}
 							name={component.name}
 							text={component.data.text}
 						/>

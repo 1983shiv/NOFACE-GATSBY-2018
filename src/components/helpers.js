@@ -9,6 +9,13 @@ export function decodeHTML(html) {
 	});
 }
 
+export function flattenSlug(slug) {
+	if (slug === "home" || slug === "homepage") {
+		slug = "";
+	}
+	return slug;
+}
+
 export function httpTohttps(html) {
 	return html.replace("http://", "https://");
 }
