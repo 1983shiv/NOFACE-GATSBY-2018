@@ -13,7 +13,7 @@ module.exports = {
 			image_url: `${urljoin(
 				config.siteUrl,
 				config.pathPrefix
-			)}/logos/logo-512.png`,
+			)}/favicons/android-chrome-384x384.png`,
 			author: config.userName,
 			copyright: config.copyright
 		}
@@ -89,13 +89,13 @@ module.exports = {
 				display: "minimal-ui",
 				icons: [
 					{
-						src: "/logos/logo-192x192.png",
+						src: "/favicons/android-chrome-192x192.png",
 						sizes: "192x192",
 						type: "image/png"
 					},
 					{
-						src: "/logos/logo-512x512.png",
-						sizes: "512x512",
+						src: "/favicons/android-chrome-384x384.png",
+						sizes: "384x384",
 						type: "image/png"
 					}
 				]

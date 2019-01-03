@@ -102,8 +102,6 @@ exports.createPages = ({ graphql, actions }) => {
 				allNoFacePage {
 					edges {
 						node {
-							slug
-							title
 							content {
 								id
 								name
@@ -125,26 +123,42 @@ exports.createPages = ({ graphql, actions }) => {
 							}
 							excerpt
 							id
+							slug
+							title
 						}
 					}
 				}
 				allNoFaceCase {
 					edges {
 						node {
-							slug
-							title
 							excerpt
 							id
+							slug
+							title
 						}
 					}
 				}
 				allNoFaceInsight {
 					edges {
 						node {
-							slug
-							title
+							content {
+								id
+								name
+								data {
+									alignment
+									background_colour
+									background_image
+									content
+									html
+									overlay
+									size
+									title
+								}
+							}
 							excerpt
 							id
+							slug
+							title
 						}
 					}
 				}
@@ -167,12 +181,8 @@ exports.createPages = ({ graphql, actions }) => {
 				});
 			});
 			result.data.allNoFaceCase.edges.forEach(({ node }) => {
-				let slug = node.slug;
-				if (slug === "homepage" || slug === "home") {
-					slug = "/";
-				}
 				createPage({
-					path: slug,
+					path: node.slug,
 					component: path.resolve(`./src/templates/page.jsx`),
 					context: {
 						content: node.content,
@@ -183,12 +193,8 @@ exports.createPages = ({ graphql, actions }) => {
 				});
 			});
 			result.data.allNoFaceInsight.edges.forEach(({ node }) => {
-				let slug = node.slug;
-				if (slug === "homepage" || slug === "home") {
-					slug = "/";
-				}
 				createPage({
-					path: slug,
+					path: node.slug,
 					component: path.resolve(`./src/templates/page.jsx`),
 					context: {
 						content: node.content,
