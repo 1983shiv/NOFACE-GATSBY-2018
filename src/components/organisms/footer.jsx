@@ -20,6 +20,10 @@ const Footer = styled.footer`
 	color: white;
 	background-color: black;
 
+	@media (min-width: 768px) {
+		padding-bottom: 128px;
+	}
+
 	nav {
 		a {
 			color: white;

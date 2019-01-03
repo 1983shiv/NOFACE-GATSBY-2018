@@ -146,11 +146,10 @@ export default class hero extends Component {
 					/>
 				</div>
 				{this.props.backgroundImage ? (
-					<img
-						className="hero__image"
-						src={this.props.backgroundImage}
-						alt={this.props.title}
-					/>
+					<picture className="hero__image">
+						{/* <source media="(min-width: 800px)" srcset="elva-800w.jpg" /> */}
+						<img src={this.props.backgroundImage} alt={this.props.title} />
+					</picture>
 				) : null}
 			</HeroElement>
 		);

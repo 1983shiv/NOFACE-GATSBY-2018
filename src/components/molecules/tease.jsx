@@ -68,9 +68,15 @@ export default class tease extends Component {
 					</Link>
 					<p>{this.props.excerpt}</p>
 				</div>
-				<Link to={this.props.slug} className="tease__link">
-					Learn more about this case study
-				</Link>
+				{this.props.type === "case" ? (
+					<Link to={this.props.slug} className="tease__link">
+						Learn more about this case study
+					</Link>
+				) : (
+					<Link to={this.props.slug} className="tease__link">
+						Continue reading this insight
+					</Link>
+				)}
 			</TeaseElement>
 		);
 	}

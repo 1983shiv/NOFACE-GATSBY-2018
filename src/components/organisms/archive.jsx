@@ -60,7 +60,7 @@ export default class archive extends Component {
 															image={node.thumbnailDefault}
 															slug={node.slug}
 															title={node.title}
-															type="case"
+															type="post"
 														/>
 													</Col>
 												));
