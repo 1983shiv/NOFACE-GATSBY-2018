@@ -1,7 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
-import htmlparser from "htmlparser2";
 import { graphql } from "gatsby";
+import PageTransition from "gatsby-plugin-page-transitions";
 import styled from "styled-components";
 
 import {
@@ -115,14 +115,27 @@ export default class PostTemplate extends React.Component {
 
 	render() {
 		return (
-			<Layout>
-				<React.Fragment>
-					<Helmet>
-						<title>{`${decodeHTML(this.props.pageContext.title)}`}</title>
-					</Helmet>
-					<ContentWrapper>{this.createMarkup()}</ContentWrapper>
-				</React.Fragment>
-			</Layout>
+			<PageTransition
+				defaultStyle={{
+					transition: "opacity 500ms ease",
+					opacity: "1"
+				}}
+				transitionStyles={{
+					entering: { opacity: "0" },
+					entered: { opacity: "1" },
+					exiting: { opacity: "1" }
+				}}
+				transitionTime={500}
+			>
+				<Layout>
+					<React.Fragment>
+						<Helmet>
+							<title>{`${decodeHTML(this.props.pageContext.title)}`}</title>
+						</Helmet>
+						<ContentWrapper>{this.createMarkup()}</ContentWrapper>
+					</React.Fragment>
+				</Layout>
+			</PageTransition>
 		);
 	}
 }
