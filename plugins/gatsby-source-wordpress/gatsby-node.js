@@ -48,6 +48,27 @@ exports.sourceNodes = async (
 			}
 		});
 	});
+
+	const nofaceInsightsURL = `https://wp.noface.app/wp-json/insights/v2/all`;
+	const nofaceInsightsResponse = await fetch(nofaceInsightsURL);
+	const nofaceInsightsData = await nofaceInsightsResponse.json();
+
+	nofaceInsightsData.forEach(page => {
+		createNode({
+			...page,
+			id: createNodeId(`noface-insight-${page.id}`),
+			parent: null,
+			children: [],
+			internal: {
+				type: "NoFaceInsight",
+				content: JSON.stringify(page),
+				contentDigest: crypto
+					.createHash("md5")
+					.update(JSON.stringify(page))
+					.digest("hex")
+			}
+		});
+	});
 };
 
 exports.createPages = ({ graphql, actions }) => {
@@ -70,7 +91,6 @@ exports.createPages = ({ graphql, actions }) => {
 									content
 									content_type
 									count
-									excerpt
 									level
 									overlay
 									semantic_level
@@ -85,6 +105,16 @@ exports.createPages = ({ graphql, actions }) => {
 					}
 				}
 				allNoFaceCase {
+					edges {
+						node {
+							slug
+							title
+							excerpt
+							id
+						}
+					}
+				}
+				allNoFaceInsight {
 					edges {
 						node {
 							slug
@@ -113,6 +143,22 @@ exports.createPages = ({ graphql, actions }) => {
 				});
 			});
 			result.data.allNoFaceCase.edges.forEach(({ node }) => {
+				let slug = node.slug;
+				if (slug === "homepage" || slug === "home") {
+					slug = "/";
+				}
+				createPage({
+					path: slug,
+					component: path.resolve(`./src/templates/page.jsx`),
+					context: {
+						content: node.content,
+						excerpt: node.excerpt,
+						title: node.title,
+						slug: node.slug
+					}
+				});
+			});
+			result.data.allNoFaceInsight.edges.forEach(({ node }) => {
 				let slug = node.slug;
 				if (slug === "homepage" || slug === "home") {
 					slug = "/";
