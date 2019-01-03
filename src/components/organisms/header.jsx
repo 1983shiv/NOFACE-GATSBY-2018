@@ -14,8 +14,10 @@ import {
 
 import Logo from "../atoms/logo";
 
+import HeaderNavigation from "../molecules/headerNavigation";
+
 const HeaderComponent = styled.header`
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 101;
@@ -29,32 +31,8 @@ const HeaderComponent = styled.header`
 
 	font-weight: 700;
 
-	a {
-		color: ${props => props.colour || "white"};
-	}
-
 	h5 {
 		display: none;
-	}
-
-	li {
-		display: inline-block;
-		letter-spacing: 0.2px;
-	}
-
-	nav {
-		width: 100%;
-		max-width: 275px;
-
-		@media (min-width: 768px) {
-			max-width: 380px;
-		}
-	}
-
-	ul {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
 	}
 
 	.logo {
@@ -98,12 +76,16 @@ export default class header extends Component {
 			<StaticQuery
 				query={graphql`
 					query GetHeaderContent {
-						allNoFacePage {
+						allNoFaceMenu {
 							edges {
 								node {
 									id
 									slug
-									title
+									content {
+										item_id
+										title
+										url
+									}
 								}
 							}
 						}
@@ -118,17 +100,14 @@ export default class header extends Component {
 							</Link>
 						</div>
 
-						<nav>
-							<ul>
-								{data.allNoFacePage.edges.map(({ node }) => (
-									<li key={node.id}>
-										<Link to={flattenSlug(node.slug)}>
-											{decodeHTML(node.title)}
-										</Link>
-									</li>
-								))}
-							</ul>
-						</nav>
+						{data.allNoFaceMenu.edges.map(
+							data =>
+								data.node.slug == "header-menu" ? (
+									<HeaderNavigation key={data.node.item_id} data={data.node} />
+								) : (
+									<React.Fragment />
+								)
+						)}
 					</HeaderComponent>
 				)}
 			/>

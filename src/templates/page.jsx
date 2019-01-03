@@ -1,7 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import PageTransition from "gatsby-plugin-page-transitions";
 import styled from "styled-components";
 
 import {
@@ -19,9 +18,10 @@ import config from "../../data/SiteConfig";
 import Heading from "../components/atoms/heading";
 import Paragraph from "../components/atoms/paragraph";
 
-import Hero from "../components/molecules/hero";
-
 import Archive from "../components/organisms/archive";
+import Hero from "../components/organisms/hero";
+
+import HTML from "../components/particles/HTML";
 
 import Layout from "../layout";
 
@@ -30,6 +30,10 @@ const ContentWrapper = styled.main`
 		margin-left: auto;
 		margin-right: auto;
 		max-width: 1110px;
+	}
+
+	> *:last-child:not(.hero) {
+		margin-bottom: 64px;
 	}
 `;
 
@@ -93,6 +97,11 @@ export default class PostTemplate extends React.Component {
 						/>
 					);
 				}
+				if (component.name == "acf/html") {
+					return (
+						<HTML key={component.id} index={index} html={component.data.html} />
+					);
+				}
 				if (component.name == "acf/paragraph") {
 					return (
 						<Paragraph
@@ -115,27 +124,14 @@ export default class PostTemplate extends React.Component {
 
 	render() {
 		return (
-			<PageTransition
-				defaultStyle={{
-					transition: "opacity 500ms ease",
-					opacity: "1"
-				}}
-				transitionStyles={{
-					entering: { opacity: "0" },
-					entered: { opacity: "1" },
-					exiting: { opacity: "1" }
-				}}
-				transitionTime={500}
-			>
-				<Layout>
-					<React.Fragment>
-						<Helmet>
-							<title>{`${decodeHTML(this.props.pageContext.title)}`}</title>
-						</Helmet>
-						<ContentWrapper>{this.createMarkup()}</ContentWrapper>
-					</React.Fragment>
-				</Layout>
-			</PageTransition>
+			<Layout>
+				<React.Fragment>
+					<Helmet>
+						<title>{`${decodeHTML(this.props.pageContext.title)}`}</title>
+					</Helmet>
+					<ContentWrapper>{this.createMarkup()}</ContentWrapper>
+				</React.Fragment>
+			</Layout>
 		);
 	}
 }

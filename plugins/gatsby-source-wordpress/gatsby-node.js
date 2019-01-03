@@ -3,32 +3,13 @@ const queryString = require("query-string");
 const crypto = require("crypto");
 const path = require("path");
 
+const siteName = "wp.noface.app";
+
 exports.sourceNodes = async (
 	{ actions: { createNode }, createNodeId },
 	{ plugins, ...options }
 ) => {
-	const nofacePagesURL = `https://wp.noface.app/wp-json/pages/v2/all`;
-	const nofacePagesResponse = await fetch(nofacePagesURL);
-	const nofacePagesData = await nofacePagesResponse.json();
-
-	nofacePagesData.forEach(page => {
-		createNode({
-			...page,
-			id: createNodeId(`noface-page-${page.id}`),
-			parent: null,
-			children: [],
-			internal: {
-				type: "NoFacePage",
-				content: JSON.stringify(page),
-				contentDigest: crypto
-					.createHash("md5")
-					.update(JSON.stringify(page))
-					.digest("hex")
-			}
-		});
-	});
-
-	const nofaceCasesURL = `https://wp.noface.app/wp-json/cases/v2/all`;
+	const nofaceCasesURL = `https://${siteName}/wp-json/cases/v2/all`;
 	const nofaceCasesResponse = await fetch(nofaceCasesURL);
 	const nofaceCasesData = await nofaceCasesResponse.json();
 
@@ -49,7 +30,7 @@ exports.sourceNodes = async (
 		});
 	});
 
-	const nofaceInsightsURL = `https://wp.noface.app/wp-json/insights/v2/all`;
+	const nofaceInsightsURL = `https://${siteName}/wp-json/insights/v2/all`;
 	const nofaceInsightsResponse = await fetch(nofaceInsightsURL);
 	const nofaceInsightsData = await nofaceInsightsResponse.json();
 
@@ -65,6 +46,48 @@ exports.sourceNodes = async (
 				contentDigest: crypto
 					.createHash("md5")
 					.update(JSON.stringify(page))
+					.digest("hex")
+			}
+		});
+	});
+
+	const nofacePagesURL = `https://${siteName}/wp-json/pages/v2/all`;
+	const nofacePagesResponse = await fetch(nofacePagesURL);
+	const nofacePagesData = await nofacePagesResponse.json();
+
+	nofacePagesData.forEach(page => {
+		createNode({
+			...page,
+			id: createNodeId(`noface-page-${page.id}`),
+			parent: null,
+			children: [],
+			internal: {
+				type: "NoFacePage",
+				content: JSON.stringify(page),
+				contentDigest: crypto
+					.createHash("md5")
+					.update(JSON.stringify(page))
+					.digest("hex")
+			}
+		});
+	});
+
+	const nofaceMenusURL = `https://${siteName}/wp-json/menus/v2/all`;
+	const nofaceMenusResponse = await fetch(nofaceMenusURL);
+	const nofaceMenusData = await nofaceMenusResponse.json();
+
+	nofaceMenusData.forEach(menu => {
+		createNode({
+			...menu,
+			id: createNodeId(`noface-menu-${menu.id}`),
+			parent: null,
+			children: [],
+			internal: {
+				type: "NoFaceMenu",
+				content: JSON.stringify(menu),
+				contentDigest: crypto
+					.createHash("md5")
+					.update(JSON.stringify(menu))
 					.digest("hex")
 			}
 		});
@@ -91,6 +114,7 @@ exports.createPages = ({ graphql, actions }) => {
 									content
 									content_type
 									count
+									html
 									level
 									overlay
 									semantic_level

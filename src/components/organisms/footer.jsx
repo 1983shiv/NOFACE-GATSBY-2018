@@ -15,6 +15,54 @@ import {
 
 import Logo from "../atoms/logo";
 
+const Footer = styled.footer`
+	padding: 32px 16px 64px;
+	color: white;
+	background-color: black;
+
+	nav {
+		a {
+			color: white;
+			opacity: 0.8;
+			text-decoration: none;
+			transition: 0.2s opacity ease;
+
+			&:active,
+			&:focus,
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+
+	h4 {
+		margin-bottom: 8px;
+		margin-top: 16px;
+	}
+
+	li {
+		line-height: 1.5;
+		margin-top: 4px;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+
+	.logo {
+		min-width: 50px;
+		width: 50px;
+
+		&__path {
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			fill: none;
+			stroke: white;
+			stroke-width: 10;
+		}
+	}
+`;
+
 export default class footer extends Component {
 	render() {
 		return (
@@ -42,7 +90,7 @@ export default class footer extends Component {
 					}
 				`}
 				render={data => (
-					<footer className="footer" role="contentinfo">
+					<Footer className="footer" role="contentinfo">
 						<Container>
 							<Row>
 								<Col sm={12}>
@@ -139,7 +187,7 @@ export default class footer extends Component {
 								</Col>
 							</Row>
 						</Container>
-					</footer>
+					</Footer>
 				)}
 			/>
 		);
