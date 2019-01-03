@@ -6,10 +6,12 @@ import styled from "styled-components";
 export default class hero extends Component {
 	render() {
 		const props = this.props;
+		const alignment = props.alignment;
 		const backgroundColour = props.backgroundColour;
 		const elementSize = props.elementSize;
 		const overlay = "0." + props.overlay;
 
+		var heroAlign;
 		var TitleElement;
 		var SectionContent;
 
@@ -21,8 +23,14 @@ export default class hero extends Component {
 			SectionContent = "70ch";
 		}
 
+		if (alignment === "right") {
+			heroAlign = "flex-end";
+		} else if (alignment === "left") {
+			heroAlign = "flex-start";
+		}
+
 		const HeroElement = styled.section`
-			align-items: center;
+			align-items: ${heroAlign ? heroAlign : "center"};
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -34,7 +42,7 @@ export default class hero extends Component {
 				? backgroundColour
 				: "var(--primary)"};
 			color: white;
-			text-align: center;
+			text-align: ${heroAlign ? "left" : "center"};
 
 			&:before {
 				content: "";
@@ -55,7 +63,6 @@ export default class hero extends Component {
 			}
 
 			.hero__content {
-				margin: 0 auto;
 				max-width: ${SectionContent};
 				padding: 32px;
 			}
@@ -82,16 +89,10 @@ export default class hero extends Component {
 
 		return (
 			<HeroElement className="hero" data-name={this.props.name}>
-				<Container>
-					<Row>
-						<Col sm={12}>
-							<div className="hero__content">
-								<TitleElement>{this.props.title}</TitleElement>
-								<div dangerouslySetInnerHTML={{ __html: this.props.content }} />
-							</div>
-						</Col>
-					</Row>
-				</Container>
+				<div className="hero__content">
+					<TitleElement>{this.props.title}</TitleElement>
+					<div dangerouslySetInnerHTML={{ __html: this.props.content }} />
+				</div>
 				{this.props.backgroundImage ? (
 					<img
 						className="hero__image"
