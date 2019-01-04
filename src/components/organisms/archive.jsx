@@ -16,11 +16,12 @@ export default class archive extends Component {
 
 		const TeaseQuery = graphql`
 			query TeaseQuery {
-				allNoFaceCase(limit: 200) {
+				allNoFaceCase(sort: { fields: [date], order: DESC }) {
 					edges {
 						node {
-							id
+							date
 							excerpt
+							id
 							slug
 							thumbnailDefault
 							title
@@ -28,11 +29,12 @@ export default class archive extends Component {
 					}
 				}
 
-				allNoFaceInsight(limit: 200) {
+				allNoFaceInsight(sort: { fields: [date], order: DESC }) {
 					edges {
 						node {
-							id
+							date
 							excerpt
+							id
 							slug
 							thumbnailDefault
 							title
