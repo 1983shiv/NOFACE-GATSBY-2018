@@ -131,6 +131,20 @@ exports.createPages = ({ graphql, actions }) => {
 				allNoFaceCase {
 					edges {
 						node {
+							content {
+								id
+								name
+								data {
+									alignment
+									background_colour
+									background_image
+									content
+									overlay
+									size
+									text
+									title
+								}
+							}
 							excerpt
 							id
 							slug

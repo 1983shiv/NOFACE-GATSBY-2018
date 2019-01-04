@@ -18,6 +18,9 @@ import config from "../../data/SiteConfig";
 import Heading from "../components/atoms/heading";
 import Paragraph from "../components/atoms/paragraph";
 
+import Section from "../components/molecules/section";
+import Testimonial from "../components/molecules/testimonial";
+
 import Archive from "../components/organisms/archive";
 import Hero from "../components/organisms/hero";
 
@@ -112,7 +115,28 @@ export default class PostTemplate extends React.Component {
 						/>
 					);
 				}
-
+				if (component.name == "acf/section") {
+					return (
+						<Section
+							key={component.id}
+							index={index}
+							backgroundColour={component.data.background_colour}
+							content={component.data.content}
+						/>
+					);
+				}
+				if (component.name == "acf/testimonial") {
+					return (
+						<Testimonial
+							key={component.id}
+							index={index}
+							name={component.name}
+							clientName={component.data.text}
+							content={component.data.content}
+							image={component.data.background_image}
+						/>
+					);
+				}
 				return;
 			});
 

@@ -4,8 +4,15 @@ import styled from "styled-components";
 
 export default class heading extends Component {
 	render() {
-		const Tag = "h" + this.props.semantic_level;
-		const className = "title--h" + this.props.level;
+		var className, Tag;
+
+		this.props.semantic_level
+			? (Tag = "h" + this.props.semantic_level)
+			: (Tag = "h2");
+
+		this.props.level
+			? (className = "title--h" + this.props.level)
+			: (className = "title");
 
 		return <Tag className={className}>{this.props.text}</Tag>;
 	}

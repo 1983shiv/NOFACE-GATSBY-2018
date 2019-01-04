@@ -22,23 +22,22 @@ export default class hero extends Component {
 
 		var heroAlign, TitleElement, SectionContent;
 
-		const photonDomain = `https://i0.wp.com/`;
-		const backgroundRAW = props.backgroundImage.replace("https://", "");
+		const backgroundRAW = props.backgroundImage;
 
-		var background_01 = photonDomain + backgroundRAW + `?ssl=1&w=320`,
-			background_02 = photonDomain + backgroundRAW + `?ssl=1&w=360`,
-			background_03 = photonDomain + backgroundRAW + `?ssl=1&w=375`,
-			background_04 = photonDomain + backgroundRAW + `?ssl=1&w=414`,
-			background_05 = photonDomain + backgroundRAW + `?ssl=1&w=720`,
-			background_06 = photonDomain + backgroundRAW + `?ssl=1&w=768`,
-			background_07 = photonDomain + backgroundRAW + `?ssl=1&w=1024`,
-			background_08 = photonDomain + backgroundRAW + `?ssl=1&w=1280`,
-			background_09 = photonDomain + backgroundRAW + `?ssl=1&w=1366`,
-			background_10 = photonDomain + backgroundRAW + `?ssl=1&w=1440`,
-			background_11 = photonDomain + backgroundRAW + `?ssl=1&w=1536`,
-			background_12 = photonDomain + backgroundRAW + `?ssl=1&w=1600`,
-			background_13 = photonDomain + backgroundRAW + `?ssl=1&w=1680`,
-			background_14 = photonDomain + backgroundRAW + `?ssl=1&w=1920`;
+		var background_01 = backgroundRAW + `?ssl=1&w=320`,
+			background_02 = backgroundRAW + `?ssl=1&w=360`,
+			background_03 = backgroundRAW + `?ssl=1&w=375`,
+			background_04 = backgroundRAW + `?ssl=1&w=414`,
+			background_05 = backgroundRAW + `?ssl=1&w=720`,
+			background_06 = backgroundRAW + `?ssl=1&w=768`,
+			background_07 = backgroundRAW + `?ssl=1&w=1024`,
+			background_08 = backgroundRAW + `?ssl=1&w=1280`,
+			background_09 = backgroundRAW + `?ssl=1&w=1366`,
+			background_10 = backgroundRAW + `?ssl=1&w=1440`,
+			background_11 = backgroundRAW + `?ssl=1&w=1536`,
+			background_12 = backgroundRAW + `?ssl=1&w=1600`,
+			background_13 = backgroundRAW + `?ssl=1&w=1680`,
+			background_14 = backgroundRAW + `?ssl=1&w=1920`;
 
 		if (this.props.index === 0) {
 			TitleElement = "h1";
@@ -105,7 +104,7 @@ export default class hero extends Component {
 				object-fit: cover;
 			}
 
-			& + * {
+			& + *:not(.hero):not(.ignore) {
 				margin-top: 64px;
 			}
 
