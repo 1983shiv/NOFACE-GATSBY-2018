@@ -1,5 +1,6 @@
 export function autoParagraph(html) {
-	return "<p>" + html.split(/\n/).join("</p>\n<p>") + "</p>";
+	html = "<p>" + html.split(/\n/).join("</p>\n<p>") + "</p>";
+	return html;
 }
 
 export function decodeHTML(html) {

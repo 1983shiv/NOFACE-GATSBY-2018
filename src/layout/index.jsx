@@ -17,7 +17,6 @@ export default class MainLayout extends React.Component {
 			<React.Fragment>
 				<Helmet>
 					<meta name="description" content={config.siteDescription} />
-					<link rel="profile" href="http://gmpg.org/xfn/11" />
 					<link
 						rel="apple-touch-icon"
 						sizes="76x76"

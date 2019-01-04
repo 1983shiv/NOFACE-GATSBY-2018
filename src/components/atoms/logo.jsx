@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class logo extends Component {
 	render() {
 		return (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.4 64.4">
+			<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 75.4 64.4">
 				<g>
 					<path
 						className="logo__path"

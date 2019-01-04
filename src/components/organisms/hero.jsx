@@ -157,7 +157,7 @@ export default class hero extends Component {
 					<TitleElement>{props.title}</TitleElement>
 					<div
 						dangerouslySetInnerHTML={{
-							__html: removeOrphans(autoParagraph(props.content))
+							__html: removeOrphans(props.content)
 						}}
 					/>
 				</div>
