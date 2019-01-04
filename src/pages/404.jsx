@@ -1,16 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { graphql } from "gatsby";
+import { Link } from "gatsby";
 import styled from "styled-components";
-
-import {
-	autoParagraph,
-	decodeHTML,
-	httpTohttps,
-	removeDimensions,
-	removeOrphans,
-	slugTitle
-} from "../components/helpers";
 
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
@@ -18,7 +9,7 @@ import config from "../../data/SiteConfig";
 import Archive from "../components/organisms/archive";
 import Hero from "../components/organisms/hero";
 
-import Layout from "../layout";
+import Layout from "../layout/index";
 
 const ContentWrapper = styled.main`
 	> *:not(.hero):not(.ignore) {
@@ -38,10 +29,17 @@ export default class PostTemplate extends React.Component {
 			<Layout>
 				<React.Fragment>
 					<Helmet>
-						<title>{`${decodeHTML(this.props.pageContext.title)}`}</title>
+						<title>404 Page</title>
 					</Helmet>
 					<ContentWrapper>
-						<Hero />
+						<h1>Error - 404</h1>
+						<h2>Sorry, We couldn't find that page</h2>
+						<p>Maybe it’s out there, somewhere...</p>
+						<p>
+							You can always find insightful posts and case studies on our
+							<Link to="/">homepage</Link>.
+						</p>
+						<Archive count={3} type="caseStudy" />
 					</ContentWrapper>
 				</React.Fragment>
 			</Layout>
