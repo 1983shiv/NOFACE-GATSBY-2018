@@ -1,6 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { graphql } from "gatsby";
+import { graphql, StaticQuery } from "gatsby";
+import { Container, Row, Col } from "react-grid-system";
 import styled from "styled-components";
 
 import {
@@ -19,6 +20,7 @@ import Heading from "../components/atoms/heading";
 import Paragraph from "../components/atoms/paragraph";
 
 import Section from "../components/molecules/section";
+import Tease from "../components/molecules/tease";
 import Testimonial from "../components/molecules/testimonial";
 
 import Archive from "../components/organisms/archive";
@@ -50,7 +52,6 @@ export default class PostTemplate extends React.Component {
 			pageHTML[0].hasOwnProperty("data") &&
 			pageHTML[0].data !== null
 		) {
-			console.log({ pageHTML });
 			let componentsArray = [];
 			let newArrayDataOfOjbect = Object.values(pageHTML);
 
@@ -146,6 +147,53 @@ export default class PostTemplate extends React.Component {
 		}
 	}
 
+	relatedItems() {
+		if (this.props.pageContext.type === "case") {
+			const RelatedWrapper = styled.section`
+				margin-top: 64px;
+
+				h2 {
+					margin-bottom: 32px;
+				}
+			`;
+
+			let relatedPages = this.props.pageContext.related;
+
+			relatedPages
+				? console.log({
+						relatedPages
+				  })
+				: console.log("No related pages");
+
+			const relatedItems = relatedPages.map(node => (
+				<Col sm={12} md={6} lg={4} key={node.id}>
+					<Tease
+						excerpt={node.excerpt}
+						image={node.thumbnailDefault}
+						slug={node.slug}
+						title={node.title}
+						type="case"
+					/>
+				</Col>
+			));
+
+			const relatedContainer = (
+				<RelatedWrapper>
+					<Container>
+						<Row>
+							<Col sm={12}>
+								<h2>Related Case Studies</h2>
+							</Col>
+							{relatedItems}
+						</Row>
+					</Container>
+				</RelatedWrapper>
+			);
+
+			return relatedContainer;
+		}
+	}
+
 	render() {
 		return (
 			<Layout>
@@ -153,7 +201,10 @@ export default class PostTemplate extends React.Component {
 					<Helmet>
 						<title>{`${decodeHTML(this.props.pageContext.title)}`}</title>
 					</Helmet>
-					<ContentWrapper>{this.createMarkup()}</ContentWrapper>
+					<ContentWrapper>
+						{this.createMarkup()}
+						{this.relatedItems()}
+					</ContentWrapper>
 				</React.Fragment>
 			</Layout>
 		);

@@ -81,7 +81,7 @@ export default class archive extends Component {
 													</Col>
 												));
 										default:
-											return "#FFFFFF";
+											return null;
 									}
 								})()}
 								{}

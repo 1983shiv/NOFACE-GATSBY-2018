@@ -100,13 +100,10 @@ export default class header extends Component {
 							</Link>
 						</div>
 
-						{data.allNoFaceMenu.edges.map(
-							(data, i) =>
-								data.node.slug == "header-menu" ? (
-									<HeaderNavigation key={i} data={data.node} />
-								) : (
-									<React.Fragment />
-								)
+						{data.allNoFaceMenu.edges.map((data, i) =>
+							data.node.slug == "header-menu" ? (
+								<HeaderNavigation key={i} data={data.node} />
+							) : null
 						)}
 					</HeaderComponent>
 				)}

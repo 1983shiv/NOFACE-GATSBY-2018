@@ -24,6 +24,16 @@ const Footer = styled.footer`
 		padding-bottom: 128px;
 	}
 
+	h4 {
+		margin-bottom: 8px;
+		margin-top: 16px;
+	}
+
+	li {
+		line-height: 1.5;
+		margin-top: 4px;
+	}
+
 	nav {
 		a {
 			color: white;
@@ -39,18 +49,14 @@ const Footer = styled.footer`
 		}
 	}
 
-	h4 {
-		margin-bottom: 8px;
-		margin-top: 16px;
-	}
-
-	li {
-		line-height: 1.5;
-		margin-top: 4px;
-	}
-
 	p {
 		margin-bottom: 0;
+	}
+
+	.footer__tagline {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
 	}
 
 	.logo {
@@ -98,7 +104,7 @@ export default class footer extends Component {
 						<Container>
 							<Row>
 								<Col sm={12}>
-									<div className="flex flex--wrap flex--justify-between">
+									<div className="footer__tagline">
 										<div className="logo">
 											<Link to="/">
 												<Logo />
