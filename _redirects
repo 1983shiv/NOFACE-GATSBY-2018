@@ -1,0 +1,19 @@
+# 301 REDIRECTS
+
+/case-study/aki-to-hotel		/		301
+/case-study/fibonartcci-auctions		/the-accessible-art-show		301
+/case-study/the-accessible-art-show		/the-accessible-art-show		301
+/case-study/southampton-solent-university-graduate-postcards		/solent-university-postcards		301
+/case-study/solent-university-postcards		/solent-university-postcards		301
+/design-systems-pattern-libraries/amp		/design-systems-pattern-libraries		301
+/quote		/contact		301
+/rock-the-slackbot-plugin-review/amp		/rock-the-slackbot-plugin-review		301
+/technological-generation-myth/amp		/examining-pattern-location-services		301
+/user-profiles-advanced-custom-fields/amp		/user-profiles-advanced-custom-fields		301
+/webp-image-format/amp		/webp-image-format		301
+/wordpress-cms/amp		/wordpress-cms		301
+/working-hampshire-businesses/amp		/working-hampshire-businesses		301
+
+# 410 REDIRECTS
+
+/examining-pattern-location-services/amp		/examining-pattern-location-services		410
