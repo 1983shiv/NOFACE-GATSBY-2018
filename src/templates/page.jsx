@@ -26,6 +26,7 @@ import Testimonial from "../components/molecules/testimonial";
 
 import Archive from "../components/organisms/archive";
 import Hero from "../components/organisms/hero";
+import Related from "../components/organisms/Related";
 
 import HTML from "../components/particles/HTML";
 
@@ -149,49 +150,12 @@ export default class PostTemplate extends React.Component {
 	}
 
 	relatedItems() {
-		if (this.props.pageContext.type === "case") {
-			const RelatedWrapper = styled.section`
-				margin-top: 64px;
-
-				h2 {
-					margin-bottom: 32px;
-				}
-			`;
-
-			let relatedPages = this.props.pageContext.related;
-
-			relatedPages
-				? console.log({
-						relatedPages
-				  })
-				: console.log("No related pages");
-
-			const relatedItems = relatedPages.map(node => (
-				<Col sm={12} md={6} lg={4} key={node.id}>
-					<Tease
-						excerpt={node.excerpt}
-						image={node.thumbnailDefault}
-						slug={node.slug}
-						title={node.title}
-						type="case"
-					/>
-				</Col>
-			));
-
-			const relatedContainer = (
-				<RelatedWrapper>
-					<Container>
-						<Row>
-							<Col sm={12}>
-								<h2>Related Case Studies</h2>
-							</Col>
-							{relatedItems}
-						</Row>
-					</Container>
-				</RelatedWrapper>
-			);
-
-			return relatedContainer;
+		if (
+			this.props.pageContext.type === "case" ||
+			(this.props.pageContext.type === "insight" &&
+				this.props.pageContext.related)
+		) {
+			return <Related relatedItems={this.props.pageContext.related} />;
 		}
 	}
 

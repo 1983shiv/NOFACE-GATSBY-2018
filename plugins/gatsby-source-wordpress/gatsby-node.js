@@ -182,6 +182,14 @@ exports.createPages = ({ graphql, actions }) => {
 							excerpt
 							id
 							imageFull
+							related {
+								date
+								excerpt
+								id
+								thumbnailDefault
+								title
+								slug
+							}
 							slug
 							title
 						}
@@ -230,6 +238,7 @@ exports.createPages = ({ graphql, actions }) => {
 						content: node.content,
 						excerpt: node.excerpt,
 						image: node.imageFull,
+						related: node.related,
 						title: node.title,
 						type: "insight",
 						slug: node.slug

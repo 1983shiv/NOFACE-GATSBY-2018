@@ -3,6 +3,24 @@ export function autoParagraph(html) {
 	return html;
 }
 
+// export function cleanExternalLinks(html) {
+// 	var parser = new DOMParser(),
+// 		htmlObject,
+// 		returnHTML;
+
+// 	htmlObject = parser.parseFromString(html, "text/xml");
+
+// 	for (var property in htmlObject["all"]) {
+// 		htmlObject["all"][property].outerHTML
+// 			? (returnHTML += htmlObject["all"][property].outerHTML)
+// 			: null;
+// 	}
+
+// 	// outerHTML
+// 	console.log({ returnHTML });
+// 	return returnHTML;
+// }
+
 export function decodeHTML(html) {
 	html = html.replace("amp;", "");
 	return html.replace(/&#(\d+);/g, function(match, dec) {

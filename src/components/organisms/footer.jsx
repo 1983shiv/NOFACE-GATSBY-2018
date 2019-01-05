@@ -122,6 +122,7 @@ export default class footer extends Component {
 											<li>
 												<a
 													href="https://goo.gl/maps/xkXPEdaC8d82"
+													rel="noopener"
 													target="_blank"
 												>
 													63 St Marys Road
@@ -171,6 +172,7 @@ export default class footer extends Component {
 											<li>
 												<a
 													href="https://www.behance.net/nofacedesigns"
+													rel="noopener"
 													target="_blank"
 												>
 													Behance Portfolio
@@ -179,6 +181,7 @@ export default class footer extends Component {
 											<li>
 												<a
 													href="https://twitter.com/NoFaceDesigns"
+													rel="noopener"
 													target="_blank"
 												>
 													Twitter Profile
@@ -187,6 +190,7 @@ export default class footer extends Component {
 											<li>
 												<a
 													href="https://www.facebook.com/nofacedesigns/"
+													rel="noopener"
 													target="_blank"
 												>
 													Facebook Page

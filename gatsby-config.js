@@ -3,31 +3,17 @@ const urljoin = require("url-join");
 
 module.exports = {
 	pathPrefix: config.pathPrefix,
-	siteMetadata: {
-		siteUrl: urljoin(config.siteUrl, config.pathPrefix),
-		rssMetadata: {
-			site_url: urljoin(config.siteUrl, config.pathPrefix),
-			feed_url: urljoin(config.siteUrl, config.pathPrefix, config.siteRss),
-			title: config.siteTitle,
-			description: config.siteDescription,
-			image_url: `${urljoin(
-				config.siteUrl,
-				config.pathPrefix
-			)}/favicons/android-chrome-384x384.png`,
-			author: config.userName,
-			copyright: config.copyright
-		}
-	},
 	plugins: [
-		"gatsby-plugin-styled-components",
-		"gatsby-plugin-react-helmet",
+		"gatsby-plugin-catch-links",
 		"gatsby-plugin-lodash",
-		{
-			resolve: "gatsby-plugin-sass"
-		},
-		{
-			resolve: "gatsby-source-wordpress"
-		},
+		"gatsby-plugin-offline",
+		"gatsby-plugin-react-helmet",
+		"gatsby-plugin-sass",
+		"gatsby-plugin-sharp",
+		"gatsby-plugin-sitemap",
+		"gatsby-plugin-styled-components",
+		"gatsby-plugin-twitter",
+		"gatsby-source-wordpress",
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
@@ -48,28 +34,12 @@ module.exports = {
 					{
 						resolve: "gatsby-remark-responsive-iframe"
 					},
-					"gatsby-remark-prismjs",
+					"gatsby-remark-autolink-headers",
 					"gatsby-remark-copy-linked-files",
-					"gatsby-remark-autolink-headers"
+					"gatsby-remark-prismjs"
 				]
 			}
 		},
-		{
-			resolve: "gatsby-plugin-google-analytics",
-			options: {
-				trackingId: config.googleAnalyticsID
-			}
-		},
-		{
-			resolve: "gatsby-plugin-nprogress",
-			options: {
-				color: config.themeColor
-			}
-		},
-		"gatsby-plugin-sharp",
-		"gatsby-plugin-catch-links",
-		"gatsby-plugin-twitter",
-		"gatsby-plugin-sitemap",
 		{
 			resolve: "gatsby-plugin-manifest",
 			options: {
@@ -90,10 +60,14 @@ module.exports = {
 						src: "/favicons/android-chrome-384x384.png",
 						sizes: "384x384",
 						type: "image/png"
+					},
+					{
+						src: "/favicons/android-chrome-512x512.png",
+						sizes: "512x512",
+						type: "image/png"
 					}
 				]
 			}
-		},
-		"gatsby-plugin-offline"
+		}
 	]
 };
