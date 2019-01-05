@@ -10,7 +10,6 @@ module.exports = {
 		"gatsby-plugin-react-helmet",
 		"gatsby-plugin-sass",
 		"gatsby-plugin-sharp",
-		"gatsby-plugin-sitemap",
 		"gatsby-plugin-styled-components",
 		"gatsby-plugin-twitter",
 		"gatsby-source-wordpress",
