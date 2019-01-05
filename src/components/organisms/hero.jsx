@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, withPrefix } from "gatsby";
+import LazyLoad from "react-lazyload";
 import { Container, Row, Col } from "react-grid-system";
 import styled from "styled-components";
 
@@ -224,24 +225,26 @@ export default class hero extends Component {
 					/>
 				</div>
 				{backgroundImage ? (
-					<picture className="hero__image">
-						<source media="(min-width: 1920px)" srcSet={backgroundImage} />
-						<source media="(min-width: 1680px)" srcSet={background_14} />
-						<source media="(min-width: 1600px)" srcSet={background_13} />
-						<source media="(min-width: 1536px)" srcSet={background_12} />
-						<source media="(min-width: 1440px)" srcSet={background_11} />
-						<source media="(min-width: 1366px)" srcSet={background_10} />
-						<source media="(min-width: 1280px)" srcSet={background_09} />
-						<source media="(min-width: 1024px)" srcSet={background_08} />
-						<source media="(min-width: 768px)" srcSet={background_07} />
-						<source media="(min-width: 720px)" srcSet={background_06} />
-						<source media="(min-width: 414px)" srcSet={background_05} />
-						<source media="(min-width: 375px)" srcSet={background_04} />
-						<source media="(min-width: 360px)" srcSet={background_03} />
-						<source media="(min-width: 320px)" srcSet={background_02} />
-						<source media="(min-width: 300px)" srcSet={background_01} />
-						<img src={backgroundImage} alt={title} />
-					</picture>
+					<LazyLoad offset={1000}>
+						<picture className="hero__image">
+							<source media="(min-width: 1920px)" srcSet={backgroundImage} />
+							<source media="(min-width: 1680px)" srcSet={background_14} />
+							<source media="(min-width: 1600px)" srcSet={background_13} />
+							<source media="(min-width: 1536px)" srcSet={background_12} />
+							<source media="(min-width: 1440px)" srcSet={background_11} />
+							<source media="(min-width: 1366px)" srcSet={background_10} />
+							<source media="(min-width: 1280px)" srcSet={background_09} />
+							<source media="(min-width: 1024px)" srcSet={background_08} />
+							<source media="(min-width: 768px)" srcSet={background_07} />
+							<source media="(min-width: 720px)" srcSet={background_06} />
+							<source media="(min-width: 414px)" srcSet={background_05} />
+							<source media="(min-width: 375px)" srcSet={background_04} />
+							<source media="(min-width: 360px)" srcSet={background_03} />
+							<source media="(min-width: 320px)" srcSet={background_02} />
+							<source media="(min-width: 300px)" srcSet={background_01} />
+							<img src={backgroundImage} alt={title} />
+						</picture>
+					</LazyLoad>
 				) : null}
 			</HeroElement>
 		);

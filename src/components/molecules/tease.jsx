@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "gatsby";
+import LazyLoad from "react-lazyload";
 import styled from "styled-components";
 
 import { decodeHTML } from "../helpers";
@@ -55,11 +56,13 @@ export default class tease extends Component {
 			<TeaseElement className={className}>
 				<div className="tease__thumbnail">
 					<Link to={this.props.slug}>
-						<img
-							src={this.props.image}
-							className=""
-							alt={decodeHTML(this.props.title) + " Featured Image"}
-						/>
+						<LazyLoad offset={200}>
+							<img
+								src={this.props.image}
+								className=""
+								alt={decodeHTML(this.props.title) + " Featured Image"}
+							/>
+						</LazyLoad>
 					</Link>
 				</div>
 				<div className="tease__information">

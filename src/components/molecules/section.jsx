@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-import { decodeHTML } from "../helpers";
+import {
+	autoParagraph,
+	decodeHTML,
+	httpTohttps,
+	removeDimensions,
+	removeOrphans,
+	slugTitle
+} from "../helpers";
 
 export default class section extends Component {
 	constructor(props) {
@@ -48,7 +55,7 @@ export default class section extends Component {
 	}
 
 	createMarkup() {
-		return { __html: this.props.content };
+		return { __html: removeDimensions(this.props.content) };
 	}
 
 	render() {

@@ -1,8 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "gatsby";
+import LazyLoad from "react-lazyload";
 import styled from "styled-components";
 
-import { decodeHTML } from "../helpers";
+import {
+	autoParagraph,
+	decodeHTML,
+	httpTohttps,
+	removeDimensions,
+	removeOrphans,
+	slugTitle
+} from "../helpers";
 
 const TestimonialElement = styled.div`
 	margin: 64px auto;
@@ -17,12 +25,12 @@ const TestimonialElement = styled.div`
 		align-items: center;
 		display: flex;
 		justify-content: space-around;
+	}
 
-		p:last-of-type {
-			margin-bottom: 0;
+	.testimonial__client {
+		margin-bottom: 0;
 
-			font-style: italic;
-		}
+		font-style: italic;
 	}
 `;
 
@@ -33,14 +41,20 @@ export default class testimonial extends Component {
 				<TestimonialElement>
 					<h2>Testimonial</h2>
 					<div className="testimonial">
-						<img
-							src={this.props.image}
-							className=""
-							alt={"Photograph of " + this.props.clientName}
-						/>
-						<div>
-							<p>"{this.props.content}"</p>
-							<p>- {this.props.clientName}</p>
+						<LazyLoad offset={400}>
+							<img
+								src={this.props.image}
+								className=""
+								alt={"Photograph of " + this.props.clientName}
+							/>
+						</LazyLoad>
+						<div className="testimonial__content">
+							<div
+								dangerouslySetInnerHTML={{
+									__html: autoParagraph(this.props.content)
+								}}
+							/>
+							<p className="testimonial__client">- {this.props.clientName}</p>
 						</div>
 					</div>
 				</TestimonialElement>
