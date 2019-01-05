@@ -13,8 +13,9 @@ import {
 	slugTitle
 } from "../components/helpers";
 
-import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
+
+import YoastSEO from "../components/SEO/YoastSEO";
 
 import Heading from "../components/atoms/heading";
 import Paragraph from "../components/atoms/paragraph";
@@ -198,9 +199,12 @@ export default class PostTemplate extends React.Component {
 		return (
 			<Layout>
 				<React.Fragment>
-					<Helmet>
-						<title>{`${decodeHTML(this.props.pageContext.title)}`}</title>
-					</Helmet>
+					<YoastSEO
+						description={`${decodeHTML(this.props.pageContext.excerpt)}`}
+						image={this.props.pageContext.image}
+						slug={this.props.pageContext.slug}
+						title={`${decodeHTML(this.props.pageContext.title)}`}
+					/>
 					<ContentWrapper>
 						{this.createMarkup()}
 						{this.relatedItems()}

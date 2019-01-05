@@ -10,12 +10,19 @@ const TestimonialElement = styled.div`
 	img {
 		border-radius: 50%;
 		margin-right: 32px;
+		max-width: 128px;
 	}
 
 	.testimonial {
 		align-items: center;
 		display: flex;
 		justify-content: space-around;
+
+		p:last-of-type {
+			margin-bottom: 0;
+
+			font-style: italic;
+		}
 	}
 `;
 
@@ -33,7 +40,7 @@ export default class testimonial extends Component {
 						/>
 						<div>
 							<p>"{this.props.content}"</p>
-							<p>{this.props.clientName}</p>
+							<p>- {this.props.clientName}</p>
 						</div>
 					</div>
 				</TestimonialElement>

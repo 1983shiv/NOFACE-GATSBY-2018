@@ -1,5 +1,6 @@
 # 301 REDIRECTS
 
+## CASE STUDIES
 /case-study/aki-to-hotel		/		301
 /case-study/fibonartcci-auctions		/the-accessible-art-show		301
 /case-study/the-accessible-art-show		/the-accessible-art-show		301
@@ -14,7 +15,9 @@
 /case-study/tu-plato		/tu-plato		301
 /case-study/rollking		/rollking		301
 
+## PAGES
 /design-systems-pattern-libraries/amp		/design-systems-pattern-libraries		301
+/examining-pattern-location-services/amp		/examining-pattern-location-services		301
 /quote		/contact		301
 /rock-the-slackbot-plugin-review/amp		/rock-the-slackbot-plugin-review		301
 /technological-generation-myth/amp		/examining-pattern-location-services		301
@@ -23,5 +26,5 @@
 /wordpress-cms/amp		/wordpress-cms		301
 /working-hampshire-businesses/amp		/working-hampshire-businesses		301
 
-# 410 REDIRECTS
-/examining-pattern-location-services/amp		/examining-pattern-location-services		410
+## GLOBAL
+/tag/*		/insights		301

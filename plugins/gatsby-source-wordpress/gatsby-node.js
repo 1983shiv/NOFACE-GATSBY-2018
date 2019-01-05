@@ -123,6 +123,7 @@ exports.createPages = ({ graphql, actions }) => {
 							}
 							excerpt
 							id
+							imageFull
 							slug
 							title
 						}
@@ -147,6 +148,7 @@ exports.createPages = ({ graphql, actions }) => {
 							}
 							excerpt
 							id
+							imageFull
 							related {
 								date
 								excerpt
@@ -179,6 +181,7 @@ exports.createPages = ({ graphql, actions }) => {
 							}
 							excerpt
 							id
+							imageFull
 							slug
 							title
 						}
@@ -197,6 +200,7 @@ exports.createPages = ({ graphql, actions }) => {
 					context: {
 						content: node.content,
 						excerpt: node.excerpt,
+						image: node.imageFull,
 						title: node.title,
 						type: "page",
 						slug: node.slug
@@ -210,6 +214,7 @@ exports.createPages = ({ graphql, actions }) => {
 					context: {
 						content: node.content,
 						excerpt: node.excerpt,
+						image: node.imageFull,
 						related: node.related,
 						title: node.title,
 						type: "case",
@@ -224,6 +229,7 @@ exports.createPages = ({ graphql, actions }) => {
 					context: {
 						content: node.content,
 						excerpt: node.excerpt,
+						image: node.imageFull,
 						title: node.title,
 						type: "insight",
 						slug: node.slug

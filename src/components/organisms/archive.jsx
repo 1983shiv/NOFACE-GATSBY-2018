@@ -47,7 +47,7 @@ export default class archive extends Component {
 			<StaticQuery
 				query={TeaseQuery}
 				render={data => (
-					<ArchiveElement className="ignore">
+					<ArchiveElement>
 						<Container>
 							<Row>
 								{(() => {

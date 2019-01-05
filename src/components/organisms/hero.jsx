@@ -14,15 +14,22 @@ import {
 
 export default class hero extends Component {
 	render() {
-		const props = this.props;
-		const alignment = props.alignment;
-		const backgroundColour = props.backgroundColour;
-		const elementSize = props.elementSize;
-		const overlay = "0." + props.overlay;
+		const {
+			alignment,
+			backgroundColour,
+			backgroundImage,
+			content,
+			elementSize,
+			name,
+			overlay,
+			title
+		} = this.props;
+
+		const overlayOpacity = "0." + overlay;
 
 		var heroAlign, TitleElement, SectionContent;
 
-		const backgroundRAW = props.backgroundImage;
+		const backgroundRAW = backgroundImage;
 
 		var background_01 = backgroundRAW + `?ssl=1&w=320`,
 			background_02 = backgroundRAW + `?ssl=1&w=360`,
@@ -79,7 +86,12 @@ export default class hero extends Component {
 				width: 100%;
 				z-index: 2;
 
-				background: rgba(20, 18, 19, ${overlay ? overlay : "0.8"});
+				background: rgba(
+					20,
+					18,
+					19,
+					${overlayOpacity ? overlayOpacity : "0.8"}
+				);
 			}
 
 			& > * {
@@ -110,6 +122,40 @@ export default class hero extends Component {
 
 			& + .hero {
 				margin-top: 0;
+			}
+
+			.scroll-downs {
+				display: none;
+				height: 55px;
+				margin: 0 auto;
+				width: 34px;
+			}
+
+			@media (min-width: 992px) {
+				.scroll-downs {
+					display: block;
+				}
+			}
+
+			.mousey {
+				width: 3px;
+				padding: 10px 15px;
+				height: 35px;
+				border: 2px solid #fff;
+				border-radius: 25px;
+				opacity: 0.75;
+				box-sizing: content-box;
+			}
+
+			.scroller {
+				width: 3px;
+				height: 10px;
+				border-radius: 25%;
+				background-color: #fff;
+				animation-name: scroll;
+				animation-duration: 5s;
+				animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+				animation-iteration-count: infinite;
 			}
 
 			.section--description {
@@ -149,24 +195,37 @@ export default class hero extends Component {
 					transform: rotate(360deg);
 				}
 			}
+
+			@keyframes scroll {
+				0% {
+					opacity: 0;
+				}
+
+				10% {
+					transform: translateY(0);
+					opacity: 1;
+				}
+
+				100% {
+					transform: translateY(15px);
+					opacity: 0;
+				}
+			}
 		`;
 
 		return (
-			<HeroElement className="hero" data-name={props.name}>
+			<HeroElement className="hero" data-name={name}>
 				<div className="hero__content">
-					<TitleElement>{props.title}</TitleElement>
+					<TitleElement>{title}</TitleElement>
 					<div
 						dangerouslySetInnerHTML={{
-							__html: removeOrphans(props.content)
+							__html: content
 						}}
 					/>
 				</div>
-				{props.backgroundImage ? (
+				{backgroundImage ? (
 					<picture className="hero__image">
-						<source
-							media="(min-width: 1920px)"
-							srcSet={props.backgroundImage}
-						/>
+						<source media="(min-width: 1920px)" srcSet={backgroundImage} />
 						<source media="(min-width: 1680px)" srcSet={background_14} />
 						<source media="(min-width: 1600px)" srcSet={background_13} />
 						<source media="(min-width: 1536px)" srcSet={background_12} />
@@ -181,7 +240,7 @@ export default class hero extends Component {
 						<source media="(min-width: 360px)" srcSet={background_03} />
 						<source media="(min-width: 320px)" srcSet={background_02} />
 						<source media="(min-width: 300px)" srcSet={background_01} />
-						<img src={props.backgroundImage} alt={props.title} />
+						<img src={backgroundImage} alt={title} />
 					</picture>
 				) : null}
 			</HeroElement>

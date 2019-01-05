@@ -3,7 +3,6 @@ import Helmet from "react-helmet";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
 import Archive from "../components/organisms/archive";

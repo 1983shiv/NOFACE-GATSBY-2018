@@ -7,7 +7,7 @@ import { decodeHTML } from "../helpers";
 export default class section extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { colour: "FFF" };
+		this.state = { anchorColour: "#FFF", colour: "FFF" };
 	}
 
 	componentDidMount() {
@@ -41,9 +41,10 @@ export default class section extends Component {
 
 		o > 125
 			? this.setState({
+					anchorColour: "#0652dd",
 					colour: "#141213"
 			  })
-			: this.setState({ colour: "#FFF" });
+			: this.setState({ anchorColour: "#FFF", colour: "#FFF" });
 	}
 
 	createMarkup() {
@@ -59,15 +60,65 @@ export default class section extends Component {
 				: "var(--black)"};
 			color: ${props => props.textColour};
 
+			a:not(.link--cta) {
+				color: ${props =>
+					props.anchorColour ? props => props.anchorColour : "var(--primary)"};
+			}
+
 			.section__content {
 				margin: 0 auto;
 				max-width: 900px;
 				padding: 0 32px;
+
+				> h2,
+				> h3,
+				> h4,
+				> h5 {
+					margin-bottom: 16px;
+					font-weight: 700;
+				}
+				/* Advanced vertical rhythym based off of https://medium.com/@sebastian.eberlein/advanced-vertical-margins-4ac69f032f79 */
+				> * + * {
+					margin-top: 16px;
+				}
+				> h2 + * {
+					margin-top: 24px;
+				}
+				> img + *,
+				> figure + * {
+					margin-top: 32px;
+				}
+				> * + h2 {
+					margin-top: 64px;
+				}
+				> * + h3 {
+					margin-top: 48px;
+				}
+				> * + img {
+					margin-top: 32px;
+				}
+				> * + h4 {
+					margin-top: 48px;
+				}
+				> img + img,
+				> figure + figure {
+					margin-top: 32px;
+				}
+				> h2 + h3 {
+					margin-top: 32px;
+				}
+				> h3 + h4 {
+					margin-top: 32px;
+				}
 			}
 		`;
 
 		return (
-			<SectionElement className="ignore" textColour={this.state.colour}>
+			<SectionElement
+				className="ignore"
+				anchorColour={this.state.anchorColour}
+				textColour={this.state.colour}
+			>
 				<div
 					className="section__content"
 					dangerouslySetInnerHTML={this.createMarkup()}

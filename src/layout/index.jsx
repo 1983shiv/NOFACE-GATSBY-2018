@@ -4,7 +4,6 @@ import { withPrefix } from "gatsby";
 
 import config from "../../data/SiteConfig";
 import styles from "../styles/style.scss";
-import SEO from "../components/SEO/SEO";
 
 import Footer from "../components/organisms/footer";
 import Header from "../components/organisms/header";
@@ -43,7 +42,6 @@ export default class MainLayout extends React.Component {
 					<meta name="theme-color" content="#ffffff" />
 				</Helmet>
 				<Helmet title={config.siteTitle} />
-				<SEO />
 				<Header />
 				{children}
 				<Footer />
