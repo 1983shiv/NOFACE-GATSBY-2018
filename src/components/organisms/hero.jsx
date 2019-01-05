@@ -68,7 +68,7 @@ export default class hero extends Component {
 			justify-content: center;
 			min-height: ${elementSize ? elementSize + "vh" : "400px"};
 			overflow: hidden;
-			padding: 48px;
+			padding: 48px 24px;
 			position: relative;
 
 			background-color: ${backgroundColour
@@ -76,6 +76,10 @@ export default class hero extends Component {
 				: "var(--primary)"};
 			color: white;
 			text-align: ${heroAlign ? "left" : "center"};
+
+			@media (min-width: 992px) {
+				padding: 48px;
+			}
 
 			&:before {
 				content: "";
@@ -102,7 +106,9 @@ export default class hero extends Component {
 
 			.hero__content {
 				max-width: ${SectionContent};
-				padding: 32px;
+				@media (min-width: 992px) {
+					padding: 32px;
+				}
 			}
 
 			.hero__image,
@@ -159,31 +165,33 @@ export default class hero extends Component {
 				animation-iteration-count: infinite;
 			}
 
-			.section--description {
-				&__before,
-				&__after {
-					height: 300px;
-					position: absolute;
-					width: 300px;
+			@media (min-width: 992px) {
+				.section--description {
+					&__before,
+					&__after {
+						height: 300px;
+						position: absolute;
+						width: 300px;
 
-					background-image: url(${withPrefix("images/logo--white.png")});
-					background-repeat: no-repeat;
-					background-size: 300px;
-					animation-duration: 60s;
-					animation-name: rotate360;
-					animation-iteration-count: infinite;
-					transform-origin: center center;
-					animation-timing-function: linear;
-				}
+						background-image: url(${withPrefix("images/logo--white.png")});
+						background-repeat: no-repeat;
+						background-size: 300px;
+						animation-duration: 60s;
+						animation-name: rotate360;
+						animation-iteration-count: infinite;
+						transform-origin: center center;
+						animation-timing-function: linear;
+					}
 
-				&__before {
-					left: -150px;
-					top: -150px;
-				}
+					&__before {
+						left: -150px;
+						top: -150px;
+					}
 
-				&__after {
-					bottom: -150px;
-					right: -150px;
+					&__after {
+						bottom: -150px;
+						right: -150px;
+					}
 				}
 			}
 

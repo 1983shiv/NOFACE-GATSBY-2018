@@ -26,7 +26,7 @@ import Testimonial from "../components/molecules/testimonial";
 
 import Archive from "../components/organisms/archive";
 import Hero from "../components/organisms/hero";
-import Related from "../components/organisms/Related";
+import Related from "../components/organisms/related";
 
 import HTML from "../components/particles/HTML";
 
