@@ -3,3 +3,78 @@
   command = "gatsby build"
 [build.environment]
   YARN_VERSION = "1.7.0"
+
+# CASE STUDIES
+[[redirects]]
+  from = "/case-study/aki-to-hotel"
+  to = "/work"
+[[redirects]]
+  from = "/case-study/fibonartcci-auctions"
+  to = "/the-accessible-art-show"
+[[redirects]]
+  from = "/case-study/the-accessible-art-show"
+  to = "/the-accessible-art-show"
+[[redirects]]
+  from = "/case-study/southampton-solent-university-graduate-postcards"
+  to = "/solent-university-postcards"
+[[redirects]]
+  from = "/case-study/solent-university-postcards"
+  to = "/solent-university-postcards"
+[[redirects]]
+  from = "/case-study/friends-of-town-quay-park"
+  to = "/friends-of-town-quay-park"
+[[redirects]]
+  from = "/case-study/vostron-gigabit-connectivity-campaign"
+  to = "/vostron-gigabit-connectivity-campaign"
+[[redirects]]
+  from = "/case-study/twics"
+  to = "/twics"
+[[redirects]]
+  from = "/case-study/vostron-blog"
+  to = "/vostron-blog"
+[[redirects]]
+  from = "/case-study/expelled-skateboarding"
+  to = "/expelled-skateboarding"
+[[redirects]]
+  from = "/case-study/wash-bomb"
+  to = "/wash-bomb"
+[[redirects]]
+  from = "/case-study/tu-plato"
+  to = "/work"
+[[redirects]]
+  from = "/case-study/rollking"
+  to = "/rollking"
+
+# PAGES
+[[redirects]]
+  from = "/design-systems-pattern-libraries/amp"
+  to = "/design-systems-pattern-libraries"
+[[redirects]]
+  from = "/examining-pattern-location-services/amp"
+  to = "/examining-pattern-location-services"
+[[redirects]]
+  from = "/quote"
+  to = "/contact"
+[[redirects]]
+  from = "/rock-the-slackbot-plugin-review/amp"
+  to = "/rock-the-slackbot-plugin-review"
+[[redirects]]
+  from = "/technological-generation-myth/amp"
+  to = "/examining-pattern-location-services"
+[[redirects]]
+  from = "/user-profiles-advanced-custom-fields/amp"
+  to = "/user-profiles-advanced-custom-fields"
+[[redirects]]
+  from = "/webp-image-format/amp"
+  to = "/webp-image-format"
+[[redirects]]
+  from = "/wordpress-cms/amp"
+  to = "/wordpress-cms"
+[[redirects]]
+  from = "/working-hampshire-businesses/amp"
+  to = "/working-hampshire-businesses"
+
+# GLOBAL
+[[redirects]]
+  from = "/tag/*"
+  to = "/insights"
