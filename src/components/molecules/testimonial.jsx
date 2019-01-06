@@ -36,6 +36,8 @@ const TestimonialElement = styled.div`
 
 export default class testimonial extends Component {
 	render() {
+		const { content, clientName, image } = this.props;
+
 		return (
 			<React.Fragment>
 				<TestimonialElement>

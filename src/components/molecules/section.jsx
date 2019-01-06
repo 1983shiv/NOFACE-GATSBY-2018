@@ -59,12 +59,12 @@ export default class section extends Component {
 	}
 
 	render() {
+		const { backgroundColour } = this.props;
+
 		const SectionElement = styled.section`
 			padding: 64px 16px;
 
-			background-color: ${this.props.backgroundColour
-				? this.props.backgroundColour
-				: "var(--black)"};
+			background-color: ${backgroundColour ? backgroundColour : "var(--black)"};
 			color: ${props => props.textColour};
 
 			a:not(.link--cta) {

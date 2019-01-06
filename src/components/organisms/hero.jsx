@@ -21,6 +21,7 @@ export default class hero extends Component {
 			backgroundImage,
 			content,
 			elementSize,
+			index,
 			name,
 			overlay,
 			title
@@ -47,7 +48,7 @@ export default class hero extends Component {
 			background_13 = backgroundRAW + `?ssl=1&w=1680`,
 			background_14 = backgroundRAW + `?ssl=1&w=1920`;
 
-		if (this.props.index === 0) {
+		if (index === 0) {
 			TitleElement = "h1";
 			SectionContent = "90ch";
 		} else {
@@ -106,6 +107,7 @@ export default class hero extends Component {
 
 			.hero__content {
 				max-width: ${SectionContent};
+
 				@media (min-width: 992px) {
 					padding: 32px;
 				}
@@ -113,11 +115,11 @@ export default class hero extends Component {
 
 			.hero__image,
 			.hero__image > * {
+				height: 100%;
+				left: 0;
 				position: absolute;
 				top: 0;
-				left: 0;
 				width: 100%;
-				height: 100%;
 				z-index: 1;
 
 				object-fit: cover;
@@ -136,33 +138,32 @@ export default class hero extends Component {
 				height: 55px;
 				margin: 0 auto;
 				width: 34px;
-			}
 
-			@media (min-width: 992px) {
-				.scroll-downs {
+				@media (min-width: 992px) {
 					display: block;
 				}
 			}
 
 			.mousey {
-				width: 3px;
-				padding: 10px 15px;
 				height: 35px;
+				padding: 10px 15px;
+				width: 3px;
+
 				border: 2px solid #fff;
 				border-radius: 25px;
 				opacity: 0.75;
-				box-sizing: content-box;
 			}
 
 			.scroller {
-				width: 3px;
 				height: 10px;
-				border-radius: 25%;
-				background-color: #fff;
-				animation-name: scroll;
+				width: 3px;
+
 				animation-duration: 5s;
-				animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
 				animation-iteration-count: infinite;
+				animation-name: scroll;
+				animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+				background-color: #fff;
+				border-radius: 25%;
 			}
 
 			@media (min-width: 992px) {

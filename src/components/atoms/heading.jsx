@@ -4,16 +4,13 @@ import styled from "styled-components";
 
 export default class heading extends Component {
 	render() {
+		const { level, semantic_level, text } = this.props;
 		var className, Tag;
 
-		this.props.semantic_level
-			? (Tag = "h" + this.props.semantic_level)
-			: (Tag = "h2");
+		semantic_level ? (Tag = "h" + semantic_level) : (Tag = "h2");
 
-		this.props.level
-			? (className = "title--h" + this.props.level)
-			: (className = "title");
+		level ? (className = "title--h" + level) : (className = "title");
 
-		return <Tag className={className}>{this.props.text}</Tag>;
+		return <Tag className={className}>{text}</Tag>;
 	}
 }

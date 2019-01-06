@@ -17,17 +17,16 @@ import Logo from "../atoms/logo";
 import HeaderNavigation from "../molecules/headerNavigation";
 
 const HeaderComponent = styled.header`
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	left: 0;
+	padding: 16px;
 	position: absolute;
 	top: 0;
-	left: 0;
-	z-index: 101;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-direction: column;
-
 	width: 100%;
-	padding: 16px;
+	z-index: 101;
 
 	font-weight: 700;
 
@@ -37,24 +36,24 @@ const HeaderComponent = styled.header`
 
 	.logo {
 		min-width: 50px;
-		width: 50px;
 		position: relative;
+		width: 50px;
 
 		&__path {
-			animation-name: draw;
 			animation-duration: 1s;
+			animation-iteration-count: 1;
+			animation-name: draw;
 			animation-timing-function: linear;
 			animation-timing-function: ease;
-			animation-iteration-count: 1;
 
-			stroke-linecap: round;
-			stroke-miterlimit: 10;
+			animation-fill-mode: forwards;
 			fill: none;
 			stroke: white;
-			stroke-width: 10;
 			stroke-dasharray: 142.47500610351562px;
 			stroke-dashoffset: 142.47500610351562px;
-			animation-fill-mode: forwards;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			stroke-width: 10;
 		}
 	}
 
@@ -65,8 +64,8 @@ const HeaderComponent = styled.header`
 	}
 
 	@media (min-width: 768px) {
-		padding: 16px 32px;
 		flex-direction: row;
+		padding: 16px 32px;
 	}
 `;
 
@@ -100,10 +99,11 @@ export default class header extends Component {
 							</Link>
 						</div>
 
-						{data.allNoFaceMenu.edges.map((data, i) =>
-							data.node.slug == "header-menu" ? (
-								<HeaderNavigation key={i} data={data.node} />
-							) : null
+						{data.allNoFaceMenu.edges.map(
+							(data, i) =>
+								data.node.slug == "header-menu" ? (
+									<HeaderNavigation key={i} data={data.node} />
+								) : null
 						)}
 					</HeaderComponent>
 				)}

@@ -12,6 +12,8 @@ const ParagraphElement = styled.p`
 
 export default class paragraph extends Component {
 	render() {
-		return <ParagraphElement>{this.props.text}</ParagraphElement>;
+		const { text } = this.props;
+
+		return <ParagraphElement>{text}</ParagraphElement>;
 	}
 }

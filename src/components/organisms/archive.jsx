@@ -11,8 +11,7 @@ const ArchiveElement = styled.section`
 
 export default class archive extends Component {
 	render() {
-		const queryCount = this.props.count;
-		const type = this.props.type;
+		const { count, type } = this.props;
 
 		const TeaseQuery = graphql`
 			query TeaseQuery {
@@ -51,10 +50,10 @@ export default class archive extends Component {
 						<Container>
 							<Row>
 								{(() => {
-									switch (this.props.type) {
+									switch (type) {
 										case "post":
 											return data.allNoFaceInsight.edges
-												.slice(0, queryCount)
+												.slice(0, count)
 												.map(({ node }) => (
 													<Col sm={12} md={6} lg={4} key={node.id}>
 														<Tease
@@ -68,7 +67,7 @@ export default class archive extends Component {
 												));
 										case "caseStudy":
 											return data.allNoFaceCase.edges
-												.slice(0, queryCount)
+												.slice(0, count)
 												.map(({ node }) => (
 													<Col sm={12} md={6} lg={4} key={node.id}>
 														<Tease

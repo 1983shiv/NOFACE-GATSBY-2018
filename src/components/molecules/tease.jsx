@@ -50,33 +50,34 @@ const TeaseElement = styled.div`
 
 export default class tease extends Component {
 	render() {
-		let className = "tease tease--" + this.props.type;
+		const { excerpt, image, slug, title, type } = this.props;
+		let className = "tease tease--" + type;
 
 		return (
 			<TeaseElement className={className}>
 				<div className="tease__thumbnail">
-					<Link to={this.props.slug}>
+					<Link to={slug}>
 						<LazyLoad offset={200}>
 							<img
-								src={this.props.image}
+								src={image}
 								className=""
-								alt={decodeHTML(this.props.title) + " Featured Image"}
+								alt={decodeHTML(title) + " Featured Image"}
 							/>
 						</LazyLoad>
 					</Link>
 				</div>
 				<div className="tease__information">
-					<Link to={this.props.slug}>
-						<h3>{decodeHTML(this.props.title)}</h3>
+					<Link to={slug}>
+						<h3>{decodeHTML(title)}</h3>
 					</Link>
-					<p>{this.props.excerpt}</p>
+					<p>{excerpt}</p>
 				</div>
-				{this.props.type === "case" ? (
-					<Link to={this.props.slug} className="tease__link">
+				{type === "case" ? (
+					<Link to={slug} className="tease__link">
 						Learn more about this case study
 					</Link>
 				) : (
-					<Link to={this.props.slug} className="tease__link">
+					<Link to={slug} className="tease__link">
 						Continue reading this insight
 					</Link>
 				)}

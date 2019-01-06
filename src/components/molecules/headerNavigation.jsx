@@ -65,12 +65,12 @@ const HeaderNav = styled.nav`
 
 export default class headerNavigation extends Component {
 	render() {
-		var items = this.props.data.content;
+		const { content } = this.props.data;
 
 		return (
 			<HeaderNav>
 				<ul>
-					{items.map(item => (
+					{content.map(item => (
 						<li key={item.item_id}>
 							<Link to={item.url}>{item.title}</Link>
 						</li>
