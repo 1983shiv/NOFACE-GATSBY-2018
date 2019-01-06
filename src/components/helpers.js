@@ -49,6 +49,10 @@ export function removeOrphans(html) {
 	return html.replace(/ ([^ ]*)$/, " $1");
 }
 
+export function removeSSL(html) {
+	//TODO
+}
+
 export function slugTitle(html) {
 	html = html.replace("-", " ");
 	html = html.toLowerCase().split(" ");
