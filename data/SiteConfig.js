@@ -6,6 +6,6 @@ module.exports = {
 		"NoFace is a digital development and design agency focused on helping businesses define their identities, and form a brand that will represent their message.",
 	siteUrl: "https://noface.co.uk", // Domain of your website without pathPrefix.
 	pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
-	themeColor: "#c62828", // Used for setting manifest and progress theme colors.
-	backgroundColor: "#141213" // Used for setting manifest background color.
+	themeColor: "#0652dd", // Used for setting manifest and progress theme colors.
+	backgroundColor: "#FFF" // Used for setting manifest background color.
 };
