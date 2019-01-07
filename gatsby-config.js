@@ -3,6 +3,9 @@ const urljoin = require("url-join");
 
 module.exports = {
 	pathPrefix: config.pathPrefix,
+	siteMetadata: {
+		siteUrl: `https://noface.co.uk`
+	},
 	plugins: [
 		"gatsby-plugin-catch-links",
 		"gatsby-plugin-lodash",
@@ -10,6 +13,7 @@ module.exports = {
 		"gatsby-plugin-react-helmet",
 		"gatsby-plugin-sass",
 		"gatsby-plugin-sharp",
+		"gatsby-plugin-sitemap",
 		"gatsby-plugin-styled-components",
 		"gatsby-plugin-twitter",
 		"gatsby-source-wordpress",
