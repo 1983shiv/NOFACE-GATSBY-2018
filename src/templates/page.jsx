@@ -33,6 +33,8 @@ import HTML from "../components/particles/HTML";
 import Layout from "../layout";
 
 const ContentWrapper = styled.main`
+	margin-top: 128px;
+
 	> *:not(.hero):not(.ignore) {
 		margin-left: auto;
 		margin-right: auto;

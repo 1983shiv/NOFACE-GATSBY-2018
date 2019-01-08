@@ -36,7 +36,7 @@ const HeaderNav = styled.nav`
 		display: inline-block;
 		margin-left: 24px;
 
-		letter-spacing: 0.2px;
+		letter-spacing: 1px;
 
 		&:first-of-type {
 			display: none;
@@ -49,7 +49,9 @@ const HeaderNav = styled.nav`
 
 		&:last-of-type {
 			margin-left: auto;
+
 			a {
+				font-weight: 500;
 				opacity: 1;
 			}
 		}

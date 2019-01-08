@@ -21,7 +21,8 @@ const HeaderComponent = styled.header`
 	z-index: 101;
 
 	background-color: ${props => props.theme.white};
-	font-weight: 700;
+	box-shadow: 0px 1px 6px ${props => props.theme.shadowColour};
+	font-weight: 400;
 
 	h5 {
 		display: none;

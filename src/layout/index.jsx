@@ -20,7 +20,8 @@ export default class MainLayout extends React.Component {
 			grey: "#202c39",
 			offWhite: "#f6f7f9",
 			primary: "0652dd",
-			white: "#ffffff"
+			white: "#ffffff",
+			shadowColour: "rgba(20, 18, 19, 0.1)"
 		};
 
 		return (
