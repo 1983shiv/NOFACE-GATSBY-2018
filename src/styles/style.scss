@@ -2,6 +2,23 @@
 /// MAIN
 */ //////////////
 
+@font-face {
+	font-family: SuisseIntl;
+	src: url("../assets/fonts/SuisseIntl-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: SuisseIntl;
+	font-weight: 500;
+	src: url("../assets/fonts/SuisseIntl-Medium.otf") format("opentype");
+}
+
+@font-face {
+	font-family: SuisseIntl;
+	font-weight: bold;
+	src: url("../assets/fonts/SuisseIntl-Bold.otf") format("opentype");
+}
+
 @import "mixins/active-states.scss";
 @import "mixins/media-queries.scss";
 @import "mixins/variables.scss";
@@ -30,17 +47,6 @@
 @import "base/table.scss";
 @import "base/video.scss";
 @import "base/wrapper.scss";
-
-@import "components/animated.scss";
-@import "components/case-study.scss";
-@import "components/cta.scss";
-@import "components/news.scss";
-@import "components/palette.scss";
-@import "components/photography.scss";
-@import "components/team.scss";
-@import "components/youtube.scss";
-@import "components/power-pages/chapter.scss";
-@import "components/power-pages/social.scss";
 
 @import "trumps/hide.scss";
 @import "trumps/text.scss";

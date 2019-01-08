@@ -7,27 +7,24 @@ h4,
 h5,
 h6 {
 	line-height: 1.25;
-	margin-bottom: $spacing-default;
-	margin-top: $spacing-default;
+	margin-bottom: 32px;
+	margin-top: 0;
 
 	font-weight: 700;
 	letter-spacing: 0.5px;
-	text-transform: uppercase;
+	text-transform: capitalize;
 }
 
-$heading-1: 48px;
-$heading-2: 36px;
-$heading-3: 24px;
-$heading-4: 18px;
-$heading-5: 16px;
-$heading-6: 14px;
-$heading-tiny: 12px;
+$heading-1: 72px;
+$heading-2: 60px;
+$heading-3: 48px;
+$heading-4: 36px;
+$heading-5: 30px;
+$heading-6: 24px;
+$heading-tiny: 18px;
 
 h1,
 .title--h1 {
-	margin-bottom: 24px;
-	margin-top: 24px;
-
 	font-size: $heading-2;
 	font-weight: 700;
 }
@@ -61,9 +58,6 @@ h6,
 @include bp-min-width($bp-lg) {
 	h1,
 	.title--h1 {
-		margin-bottom: 24px;
-		margin-top: 40px;
-
 		font-size: $heading-1;
 	}
 	h2,

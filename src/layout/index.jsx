@@ -1,6 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { withPrefix } from "gatsby";
+import { ThemeProvider } from "styled-components";
 
 import config from "../../data/SiteConfig";
 import styles from "../styles/style.scss";
@@ -11,6 +12,16 @@ import Header from "../components/organisms/header";
 export default class MainLayout extends React.Component {
 	render() {
 		const { children } = this.props;
+
+		const theme = {
+			black: "#141213",
+			greyLightest: "#dddddd",
+			greyLight: "#595959",
+			grey: "#202c39",
+			offWhite: "#f6f7f9",
+			primary: "0652dd",
+			white: "#ffffff"
+		};
 
 		return (
 			<React.Fragment>
@@ -42,9 +53,13 @@ export default class MainLayout extends React.Component {
 					<meta name="theme-color" content="#ffffff" />
 				</Helmet>
 				<Helmet title={config.siteTitle} />
-				<Header />
-				{children}
-				<Footer />
+				<ThemeProvider theme={theme}>
+					<React.Fragment>
+						<Header />
+						{children}
+						<Footer />
+					</React.Fragment>
+				</ThemeProvider>
 			</React.Fragment>
 		);
 	}

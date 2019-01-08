@@ -2,52 +2,55 @@ import React, { Component } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-const HeaderNav = styled.nav`
-	max-width: 380px;
-	width: 100%;
+import v from "../../styles/_vars.scss";
 
-	font-size: 1.6rem;
+const HeaderNav = styled.nav`
+	flex: 1;
+
+	font-size: 1.8rem;
 	line-height: 1.45;
 
 	a {
 		display: inline-block;
 		position: relative;
 
-		color: white;
+		color: ${props => props.theme.black};
+		opacity: 0.8;
 		text-decoration: none;
-		transition: color 0.3s;
+		text-transform: uppercase;
+		transition: opacity 0.3s;
 		vertical-align: middle;
 
-		&:hover {
-			&:after {
-				transform: scaleX(1);
-				transition: transform 0.51s cubic-bezier(0.165, 0.84, 0.44, 1);
-			}
+		&[aria-current="page"] {
+			opacity: 1;
 		}
 
-		&:after {
-			content: "";
-			display: block;
-			height: 1px;
-			width: 100%;
-
-			background: white;
-			transform: scaleX(0);
-			transform-origin: left center;
-			transition: transform 0.31s cubic-bezier(0.165, 0.84, 0.44, 1);
+		&:active,
+		&:focus,
+		&:hover {
+			opacity: 1;
 		}
 	}
 
 	li {
 		display: inline-block;
+		margin-left: 24px;
 
 		letter-spacing: 0.2px;
 
 		&:first-of-type {
 			display: none;
+			margin-left: auto;
 
 			@media (min-width: 400px) {
 				display: inherit;
+			}
+		}
+
+		&:last-of-type {
+			margin-left: auto;
+			a {
+				opacity: 1;
 			}
 		}
 	}
@@ -64,6 +67,10 @@ const HeaderNav = styled.nav`
 `;
 
 export default class headerNavigation extends Component {
+	constructor(props) {
+		super(props);
+	}
+
 	render() {
 		const { content } = this.props.data;
 

@@ -45,7 +45,7 @@ article {
 	> *:not(figure):not(img):not(picture):not(.ignore) {
 		margin-left: auto;
 		margin-right: auto;
-		max-width: $width-content;
+		max-width: 80%;
 	}
 	& > figure,
 	& > img,
@@ -53,7 +53,7 @@ article {
 	& > .ignore {
 		display: block;
 		margin: $spacing-large auto;
-		max-width: $width-content + 200px;
+		max-width: 80%;
 		width: 100%;
 		text-align: center;
 	}
@@ -74,14 +74,14 @@ article {
 
 .article--tight {
 	> *:not(figure):not(img):not(picture):not(.ignore) {
-		max-width: $width-content - 100;
+		max-width: 80%;
 	}
 
 	& > figure,
 	& > img,
 	& > picture,
 	& > .ignore {
-		max-width: $width-content + 100px;
+		max-width: 80%;
 	}
 }
 

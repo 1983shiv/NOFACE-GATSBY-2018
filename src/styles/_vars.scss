@@ -72,14 +72,13 @@ $vars: (
 );
 
 /* FONT VARIABLES */
+$font-family-primary: "SuisseIntl", Arial, Helvetica, Roboto, sans-serif;
 $font-weight-default: 400;
+$font-weight-semi: 500;
 $font-weight-bold: 700;
-/* GRID VARIABLES */
-$grid-gap-default: $spacing-large;
-$grid-gap-large: $spacing-large * 1.5;
-$grid-gap-huge: $spacing-huge * 1.5;
-/* SIZE UNITS */
-$heading-height: 100px;
-$mobile-height: 110px;
-$width-content: 900px;
-$z-index-front: 101;
+/* Z-INDEX UNITS */
+$z-index-front: 100;
+$z-index-forward: 1;
+$z-index-default: 0;
+$z-index-backward: -1;
+$z-index-back: -100;
