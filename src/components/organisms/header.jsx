@@ -99,11 +99,10 @@ export default class header extends Component {
 							</Link>
 						</div>
 
-						{data.allNoFaceMenu.edges.map(
-							(data, i) =>
-								data.node.slug == "header-menu" ? (
-									<HeaderNavigation key={i} data={data.node} />
-								) : null
+						{data.allNoFaceMenu.edges.map((data, i) =>
+							data.node.slug == "header-menu" ? (
+								<HeaderNavigation key={i} data={data.node} />
+							) : null
 						)}
 					</HeaderComponent>
 				)}
