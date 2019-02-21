@@ -9,7 +9,7 @@ exports.sourceNodes = async (
 	{ actions: { createNode }, createNodeId },
 	{ plugins, ...options }
 ) => {
-	const nofaceCasesURL = `https://${siteName}/wp-json/cases/v2/all`;
+	const nofaceCasesURL = `https://wp.noface.app/wp-json/cases/v2/all`;
 	const nofaceCasesResponse = await fetch(nofaceCasesURL);
 	const nofaceCasesData = await nofaceCasesResponse.json();
 
@@ -30,7 +30,7 @@ exports.sourceNodes = async (
 		});
 	});
 
-	const nofaceInsightsURL = `https://${siteName}/wp-json/insights/v2/all`;
+	const nofaceInsightsURL = `https://wp.noface.app/wp-json/insights/v2/all`;
 	const nofaceInsightsResponse = await fetch(nofaceInsightsURL);
 	const nofaceInsightsData = await nofaceInsightsResponse.json();
 
@@ -51,7 +51,7 @@ exports.sourceNodes = async (
 		});
 	});
 
-	const nofacePagesURL = `https://${siteName}/wp-json/pages/v2/all`;
+	const nofacePagesURL = `https://wp.noface.app/wp-json/pages/v2/all`;
 	const nofacePagesResponse = await fetch(nofacePagesURL);
 	const nofacePagesData = await nofacePagesResponse.json();
 
@@ -72,7 +72,7 @@ exports.sourceNodes = async (
 		});
 	});
 
-	const nofaceMenusURL = `https://${siteName}/wp-json/menus/v2/all`;
+	const nofaceMenusURL = `https://wp.noface.app/wp-json/menus/v2/all`;
 	const nofaceMenusResponse = await fetch(nofaceMenusURL);
 	const nofaceMenusData = await nofaceMenusResponse.json();
 
@@ -182,14 +182,6 @@ exports.createPages = ({ graphql, actions }) => {
 							excerpt
 							id
 							imageFull
-							related {
-								date
-								excerpt
-								id
-								thumbnailDefault
-								title
-								slug
-							}
 							slug
 							title
 						}
