@@ -9,7 +9,6 @@ module.exports = {
 	plugins: [
 		"gatsby-plugin-catch-links",
 		"gatsby-plugin-lodash",
-		"gatsby-plugin-offline",
 		"gatsby-plugin-react-helmet",
 		"gatsby-plugin-sass",
 		"gatsby-plugin-sharp",
